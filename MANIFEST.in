@@ -1,0 +1,3 @@
+include versioneer.py
+include src/vws_test_fixtures/_version.py
+include src/vws_test_fixtures/py.typed
