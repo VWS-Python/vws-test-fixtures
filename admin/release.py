@@ -1,5 +1,5 @@
 """
-Release the next version of VWS Auth Tools.
+Release the next version of VWS Test Fixtures.
 """
 
 import datetime
@@ -14,7 +14,7 @@ from github import Github, Repository, UnknownObjectException
 
 def get_version() -> str:
     """
-    Return the next version of VWS Auth Tools.
+    Return the next version of VWS Test Fixtures.
     This is today’s date in the format ``YYYY.MM.DD.MICRO``.
     ``MICRO`` refers to the number of releases created on this date,
     starting from ``0``.
