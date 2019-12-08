@@ -1,3 +1,3 @@
 """
-Tests for authorization tools.
+Tests for test fixtures.
 """
