@@ -4,8 +4,6 @@ Test for the new fixtures.
 
 import io
 
-pytest_plugins = 'pytester'  # pylint: disable=invalid-name
-
 
 def test_image_fixtures(
     high_quality_image: io.BytesIO,
