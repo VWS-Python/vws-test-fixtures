@@ -30,6 +30,8 @@ Example usage
 
 ``png_too_large`` is a PNG which has dimensions whcih are too large to be added to a Vuforia database.
 
+... and more, see the `full documentation <https://vws-test-fixtures.readthedocs.io/en/latest>`__ for details of all fixtures provided.
+
 Full Documentation
 ------------------
 
