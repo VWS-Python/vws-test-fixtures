@@ -4,6 +4,7 @@ Fixtures for images.
 
 import io
 import random
+from pathlib import Path
 
 import pytest
 from PIL import Image
@@ -50,7 +51,7 @@ def high_quality_image() -> io.BytesIO:
 
     At the time of writing, this image gains a tracking rating of 5.
     """
-    path = 'tests/data/high_quality_image.jpg'
+    path = Path(__file__).parent / 'high_quality_image.jpg'
     with open(path, 'rb') as high_quality_image_file:
         return io.BytesIO(high_quality_image_file.read())
 
