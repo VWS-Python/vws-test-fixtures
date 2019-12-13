@@ -29,6 +29,5 @@ def test_image_fixtures(
         image_files_failed_state.getvalue(),
         bad_image_file.getvalue(),
         different_high_quality_image.getvalue(),
-
     ]
     assert len(set(fixture_bytes_list)) == len(fixture_bytes_list)
