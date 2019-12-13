@@ -1,7 +1,7 @@
 |project|
 =========
 
-``pytest`` fixtures for use when testing tools which interact with Vuforia Web Services.
+``pytest`` fixtures for testing tools with the Vuforia Web Services (VWS) API.
 
 Installation
 ------------
