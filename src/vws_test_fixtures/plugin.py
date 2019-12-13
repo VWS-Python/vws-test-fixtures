@@ -52,8 +52,7 @@ def high_quality_image() -> io.BytesIO:
     At the time of writing, this image gains a tracking rating of 5.
     """
     path = Path(__file__).parent / 'high_quality_image.jpg'
-    with open(path, 'rb') as high_quality_image_file:
-        return io.BytesIO(high_quality_image_file.read())
+    return io.BytesIO(path.read_bytes())
 
 
 @pytest.fixture
