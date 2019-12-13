@@ -12,6 +12,8 @@ install:
 cache: pip
 script:
 - make lint
-- pytest -vvv --exitfirst tests/ --cov-fail-under 100 --cov src --cov tests
+  # We do not require 100% coverage because of an issue collecting coverage.
+  # See comments in ``image.py`` for details.
+- pytest -vvv --exitfirst tests/ --cov src --cov tests
 after_success:
 - codecov

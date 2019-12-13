@@ -2,6 +2,10 @@
 Fixtures for images.
 """
 
+# Coverage is weird in this file - it seems that given an entry point and that
+# this is in ``pytest_plugins``, this file's imports and image function
+# definitions are not counted.
+
 import io
 import random
 from pathlib import Path
