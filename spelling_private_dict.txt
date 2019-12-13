@@ -11,6 +11,7 @@ macOS
 metadata
 multipart
 noqa
+png
 pragma
 pytest
 refactor
