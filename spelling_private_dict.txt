@@ -16,6 +16,7 @@ pragma
 pytest
 refactor
 rfc
+rgb
 ubuntu
 vuforia
 vws

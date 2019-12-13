@@ -1,5 +1,5 @@
 """
-XXX
+``pytest`` fixtures for testing Vuforia Web Services related tools.
 """
 
 from ._version import get_versions
