@@ -40,4 +40,5 @@ setup(
         'dev': DEV_REQUIRES,
         'packaging': PACKAGING_REQUIRES,
     },
+    entry_points={'pytest11': ['foobar = vws_test_fixtures.plugin']},
 )
