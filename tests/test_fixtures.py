@@ -1,2 +1,2 @@
-def test_example(foobar) -> None:
+def test_example() -> None:
     pass
