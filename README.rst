@@ -44,5 +44,5 @@ See the `full documentation <https://vws-test-fixtures.readthedocs.io/en/latest>
 .. |Documentation Status| image:: https://readthedocs.org/projects/vws-test-fixtures/badge/?version=latest
    :target: https://vws-test-fixtures.readthedocs.io/en/latest/?badge=latest
    :alt: Documentation Status
-.. |PyPI| image:: https://badge.fury.io/py/VWS-test-fixtures.svg
-   :target: https://badge.fury.io/py/VWS-test-fixtures
+.. |PyPI| image:: https://badge.fury.io/py/VWS-Test-Fixtures.svg
+   :target: https://badge.fury.io/py/VWS-Test-Fixtures
