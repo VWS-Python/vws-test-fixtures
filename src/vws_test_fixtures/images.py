@@ -2,9 +2,9 @@
 Fixtures for images.
 """
 
-# Coverage is weird in this file - it seems that given an entry point and that
-# this is in ``pytest_plugins``, this file's imports and image function
-# definitions are not counted.
+# Coverage is weird in this file - it seems that because this is an entry
+# point, this file's imports and image function definitions are not counted.
+# See https://github.com/pytest-dev/pytest-cov/issues/372.
 
 import io
 import random

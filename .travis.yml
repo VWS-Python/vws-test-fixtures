@@ -12,8 +12,8 @@ install:
 cache: pip
 script:
 - make lint
-  # We do not require 100% coverage because of an issue collecting coverage.
-  # See comments in ``image.py`` for details.
+# We do not require 100% coverage because of an issue collecting coverage.
+# See https://github.com/pytest-dev/pytest-cov/issues/372.
 - pytest -vvv --exitfirst tests/ --cov src --cov tests
 after_success:
 - codecov
