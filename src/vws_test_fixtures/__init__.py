@@ -2,6 +2,8 @@
 ``pytest`` fixtures for testing Vuforia Web Services related tools.
 """
 
+from setuptools_scm import get_version
+
 try:
     __version__ = get_version(root='..', relative_to=Path(__file__).parent)
 except LookupError:  # pragma: no cover
