@@ -36,7 +36,6 @@ setup(
     },
     setup_requires=['setuptools_scm', 'setuptools_scm_git_archive'],
     install_requires=INSTALL_REQUIRES,
-    install_requires=INSTALL_REQUIRES,
     extras_require={
         'dev': DEV_REQUIRES,
         'packaging': PACKAGING_REQUIRES,
