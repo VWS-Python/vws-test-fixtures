@@ -2,6 +2,8 @@
 ``pytest`` fixtures for testing Vuforia Web Services related tools.
 """
 
+from pathlib import Path
+
 from setuptools_scm import get_version
 
 try:
