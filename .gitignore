@@ -104,3 +104,6 @@ venv.bak/
 .mypy_cache/
 
 .DS_Store
+
+# setuptools_scm
+src/*/_setuptools_scm_version.txt
