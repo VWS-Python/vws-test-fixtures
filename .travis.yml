@@ -5,6 +5,10 @@ addons:
   apt:
     packages:
     - enchant
+env:
+# See https://pytest-cov.readthedocs.io/en/latest/plugins.html for why we set
+# these variables.
+- COV_CORE_CONFIG=.coveragerc COV_CORE_SOURCE=src COV_CORE_DATAFILE=.coverage.eager
 before_install:
 - travis_retry pip install --upgrade pip setuptools
 install:
@@ -12,8 +16,6 @@ install:
 cache: pip
 script:
 - make lint
-# We do not require 100% coverage because of an issue collecting coverage.
-# See https://github.com/pytest-dev/pytest-cov/issues/372.
-- pytest -vvv --exitfirst tests/ --cov src --cov tests
+- pytest -vvv --exitfirst --cov-append --cov-fail-under 100 tests/ --cov src --cov tests
 after_success:
 - codecov
