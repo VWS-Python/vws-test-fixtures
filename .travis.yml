@@ -8,9 +8,7 @@ addons:
 env:
 # See https://pytest-cov.readthedocs.io/en/latest/plugins.html for why we set
 # these variables.
-- COV_CORE_CONFIG=.coveragerc
-- COV_CORE_SOURCE=src
-- COV_CORE_DATAFILE=.coverage.eager
+- COV_CORE_CONFIG=.coveragerc COV_CORE_SOURCE=src COV_CORE_DATAFILE=.coverage.eager
 before_install:
 - travis_retry pip install --upgrade pip setuptools
 install:
