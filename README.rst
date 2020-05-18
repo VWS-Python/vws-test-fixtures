@@ -37,10 +37,10 @@ Full Documentation
 
 See the `full documentation <https://vws-test-fixtures.readthedocs.io/en/latest>`__.
 
-.. |Build Status| image:: https://travis-ci.com/adamtheturtle/vws-test-fixtures.svg?branch=master
-   :target: https://travis-ci.com/adamtheturtle/vws-test-fixtures
-.. |codecov| image:: https://codecov.io/gh/adamtheturtle/vws-test-fixtures/branch/master/graph/badge.svg
-   :target: https://codecov.io/gh/adamtheturtle/vws-test-fixtures
+.. |Build Status| image:: https://travis-ci.com/VWS-Python/vws-test-fixtures.svg?branch=master
+   :target: https://travis-ci.com/VWS-Python/vws-test-fixtures
+.. |codecov| image:: https://codecov.io/gh/VWS-Python/vws-test-fixtures/branch/master/graph/badge.svg
+   :target: https://codecov.io/gh/VWS-Python/vws-test-fixtures
 .. |Documentation Status| image:: https://readthedocs.org/projects/vws-test-fixtures/badge/?version=latest
    :target: https://vws-test-fixtures.readthedocs.io/en/latest/?badge=latest
    :alt: Documentation Status
