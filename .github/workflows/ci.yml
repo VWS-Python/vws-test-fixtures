@@ -44,6 +44,7 @@ jobs:
           COV_CORE_SOURCE: src
           COV_CORE_DATAFILE: .coverage.eager
         run: |
+          env
           pytest -s -vvv --cov-fail-under 100 --cov=src/ --cov=tests tests/ --cov-report=xml
 
       - name: "Upload coverage to Codecov"
