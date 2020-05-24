@@ -13,15 +13,6 @@ jobs:
 
     runs-on: ubuntu-latest
 
-    env:
-      # See https://pytest-cov.readthedocs.io/en/latest/plugins.html for why we
-      # set these variables.
-      #
-      # Without them, pytest plugin coverage is not counted correctly.
-      COV_CORE_CONFIG: .coveragerc
-      COV_CORE_SOURCE: src
-      COV_CORE_DATAFILE: .coverage.eager
-
     strategy:
       matrix:
         python-version: [3.8]
@@ -44,6 +35,14 @@ jobs:
           make lint
 
       - name: "Run tests"
+        env:
+          # See https://pytest-cov.readthedocs.io/en/latest/plugins.html for why we
+          # set these variables.
+          #
+          # Without them, pytest plugin coverage is not counted correctly.
+          COV_CORE_CONFIG: .coveragerc
+          COV_CORE_SOURCE: src
+          COV_CORE_DATAFILE: .coverage.eager
         run: |
           pytest -s -vvv --cov-fail-under 100 --cov=src/ --cov=tests tests/ --cov-report=xml
 
