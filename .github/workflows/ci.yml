@@ -37,7 +37,7 @@ jobs:
       - name: "Run tests"
         env:
           # See https://pytest-cov.readthedocs.io/en/latest/plugins.html for why we
-          # set these variables.
+          # set these variables, and use `--cov-append`.
           #
           # Without them, pytest plugin coverage is not counted correctly.
           COV_CORE_CONFIG: .coveragerc
@@ -45,7 +45,7 @@ jobs:
           COV_CORE_DATAFILE: .coverage.eager
         run: |
           env
-          pytest -s -vvv --cov-fail-under 100 --cov=src/ --cov=tests tests/ --cov-report=xml
+          pytest -s -vvv --cov-fail-under 100 --cov=src/ --cov=tests tests/ --cov-append --cov-report=xml
 
       - name: "Upload coverage to Codecov"
         uses: "codecov/codecov-action@v1"
