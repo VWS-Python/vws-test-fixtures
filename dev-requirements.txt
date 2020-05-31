@@ -16,7 +16,6 @@ pylint==2.5.2
 pyroma==2.6
 pytest-cov==2.9.0  # Measure code coverage
 pytest==5.4.2
-pytz==2020.1
 sphinx-autodoc-typehints==1.10.3
 sphinx-click==2.3.2
 sphinx==3.0.4
