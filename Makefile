@@ -7,6 +7,7 @@ SPHINXOPTS := -W
 
 .PHONY: lint
 lint: \
+    black \
     check-manifest \
     doc8 \
     flake8 \
@@ -26,7 +27,7 @@ lint: \
 .PHONY: fix-lint
 fix-lint: \
     autoflake \
-    fix-yapf \
+    fix-black \
     fix-isort
 
 .PHONY: docs
