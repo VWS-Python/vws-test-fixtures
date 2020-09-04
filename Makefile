@@ -22,7 +22,6 @@ lint: \
     vulture \
     pylint \
     pydocstyle \
-    yapf
 
 .PHONY: fix-lint
 fix-lint: \
