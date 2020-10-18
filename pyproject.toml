@@ -109,7 +109,6 @@ log_cli = true
 
 ignore = [
 	"*.enc",
-	"setup-requirements.txt",
 	".appveyor.yml",
 	".coveragerc",
 	".isort.cfg",
@@ -143,7 +142,4 @@ ignore = [
 	"tests/**",
 	"vuforia_secrets.env.example",
 	"lint.mk",
-	"indirect-requirements.txt",
-	"packaging-requirements.txt",
-	"dev-requirements.txt",
 ]
