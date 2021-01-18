@@ -19,4 +19,4 @@ sphinx-autodoc-typehints==1.11.1
 sphinx==3.4.2
 sphinxcontrib.spelling==7.1.0
 twine==3.3.0
-vulture==2.1
+vulture==2.3
