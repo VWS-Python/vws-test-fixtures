@@ -1,14 +1,13 @@
 """
-Setup script for DC/OS End to End tests.
+Setup script.
 """
 
 from pathlib import Path
-from typing import List
 
 from setuptools import setup
 
 
-def _get_dependencies(requirements_file: Path) -> List[str]:
+def _get_dependencies(requirements_file: Path) -> list[str]:
     """
     Return requirements from a requirements file.
 
