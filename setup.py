@@ -2,6 +2,10 @@
 Setup script.
 """
 
+# We import this because ReadTheDocs needs Python 3.8 or below.
+# Once that can go to Python 3.9 we can remove this import.
+from __future__ import annotations
+
 from pathlib import Path
 
 from setuptools import setup
