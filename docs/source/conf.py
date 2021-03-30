@@ -49,7 +49,7 @@ html_show_copyright = False
 html_show_sphinx = False
 html_show_sourcelink = False
 html_theme_options = {
-    "sidebar_hide_name": False,
+    'sidebar_hide_name': False,
 }
 
 # Output file base name for HTML help builder.
@@ -61,15 +61,7 @@ intersphinx_mapping = {
 nitpicky = True
 warning_is_error = True
 nitpick_ignore = [
-    ('py:exc', 'RetryError'),
-    # See https://bugs.python.org/issue31024 for why Sphinx cannot find this.
-    ('py:class', 'typing.Tuple'),
-    ('py:class', 'typing.Optional'),
     ('py:class', '_io.BytesIO'),
-    ('py:class', 'docker.types.services.Mount'),
-    # Requests documentation exposes ``requests.Response``, not
-    # ``requests.models.response``.
-    ('py:class', 'requests.models.Response'),
 ]
 
 autoclass_content = 'both'
