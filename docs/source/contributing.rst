@@ -2,6 +2,8 @@ Contributing to |project|
 =========================
 
 .. contents::
+   :local:
+   :class: this-will-duplicate-information-and-it-is-still-useful-here
 
 Contributions to this repository must pass tests and linting.
 
