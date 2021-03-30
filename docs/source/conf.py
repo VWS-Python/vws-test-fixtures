@@ -43,25 +43,20 @@ language = None
 
 # The name of the syntax highlighting style to use.
 pygments_style = 'sphinx'
-html_theme = 'alabaster'
 
-# Custom sidebar templates, must be a dictionary that maps document names
-# to template names.
-#
-# This is required for the alabaster theme
-# refs: http://alabaster.readthedocs.io/en/latest/installation.html#sidebars
-html_sidebars = {
-    '**': [
-        'relations.html',  # needs 'show_related': True theme option to display
-        'searchbox.html',
-    ],
+html_theme = 'furo'
+html_show_copyright = False
+html_show_sphinx = False
+html_show_sourcelink = False
+html_theme_options = {
+    "sidebar_hide_name": False,
 }
 
 # Output file base name for HTML help builder.
-htmlhelp_basename = 'VWSPYTHONdoc'
+htmlhelp_basename = 'VWSTESTFIXTURESdoc'
 autoclass_content = 'init'
 intersphinx_mapping = {
-    'python': ('https://docs.python.org/3.7', None),
+    'python': ('https://docs.python.org/3.8', None),
 }
 nitpicky = True
 warning_is_error = True
@@ -77,22 +72,7 @@ nitpick_ignore = [
     ('py:class', 'requests.models.Response'),
 ]
 
-html_show_copyright = False
-html_show_sphinx = False
-html_show_sourcelink = False
 autoclass_content = 'both'
-
-html_theme_options = {
-    'show_powered_by': 'false',
-}
-
-html_sidebars = {
-    '**': [
-        'about.html',
-        'navigation.html',
-        'searchbox.html',
-    ],
-}
 
 # Don't check anchors because many websites use #! for AJAX magic
 # http://sphinx-doc.org/config.html#confval-linkcheck_anchors
