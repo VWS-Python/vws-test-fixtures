@@ -45,6 +45,7 @@ language = None
 pygments_style = 'sphinx'
 
 html_theme = 'furo'
+html_title = project
 html_show_copyright = False
 html_show_sphinx = False
 html_show_sourcelink = False
