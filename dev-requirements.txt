@@ -1,4 +1,4 @@
-PyGithub==1.54.1
+PyGithub==1.55
 Sphinx-Substitution-Extensions==2020.9.30.0
 autoflake==1.4
 black==21.4b0
