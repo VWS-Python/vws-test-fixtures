@@ -10,7 +10,7 @@ flake8==3.9.2
 freezegun==1.1.0
 furo==2021.6.24b37
 isort==5.9.1
-mypy==0.812
+mypy==0.910
 pip_check_reqs==2.2.2
 pydocstyle==6.1.1
 pylint==2.9.3
