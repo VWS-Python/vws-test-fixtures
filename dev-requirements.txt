@@ -19,6 +19,6 @@ pytest-cov==2.12.1  # Measure code coverage
 sphinx-autodoc-typehints==1.12.0
 sphinx==4.1.1
 sphinxcontrib.spelling==7.2.1
-twine==3.4.1
+twine==3.4.2
 types-setuptools==57.0.0
 vulture==2.3
