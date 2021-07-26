@@ -22,19 +22,19 @@ def _get_dependencies(requirements_file: Path) -> list[str]:
 
 
 _DIRECT_REQUIRES = _get_dependencies(
-    requirements_file=Path('requirements.txt'),
+    requirements_file=Path('requirements/requirements.txt'),
 )
 
 INSTALL_REQUIRES = _DIRECT_REQUIRES
 DEV_REQUIRES = _get_dependencies(
-    requirements_file=Path('dev-requirements.txt'),
+    requirements_file=Path('requirements/dev-requirements.txt'),
 )
 PACKAGING_REQUIRES = _get_dependencies(
-    requirements_file=Path('packaging-requirements.txt'),
+    requirements_file=Path('requirements/packaging-requirements.txt'),
 )
 
 SETUP_REQUIRES = _get_dependencies(
-    requirements_file=Path('setup-requirements.txt'),
+    requirements_file=Path('requirements/setup-requirements.txt'),
 )
 
 setup(
