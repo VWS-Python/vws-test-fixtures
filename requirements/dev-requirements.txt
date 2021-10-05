@@ -15,7 +15,7 @@ pip_check_reqs==2.3.0
 pydocstyle==6.1.1
 pylint==2.11.1
 pyroma==3.2
-pytest-cov==2.12.1  # Measure code coverage
+pytest-cov==3.0.0  # Measure code coverage
 sphinx-autodoc-typehints==1.12.0
 sphinx==4.2.0
 sphinxcontrib.spelling==7.2.1
