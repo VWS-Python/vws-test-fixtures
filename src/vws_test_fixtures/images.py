@@ -9,6 +9,7 @@ Fixtures for images.
 import io
 import random
 from pathlib import Path
+from typing import Literal, Union
 
 import pytest
 from _pytest.fixtures import SubRequest
@@ -17,7 +18,7 @@ from PIL import Image
 
 def _make_image_file(
     file_format: str,
-    color_space: str,
+    color_space: Union[Literal['L'], Literal['RGB'], Literal['CMYK']],
     width: int,
     height: int,
 ) -> io.BytesIO:
@@ -37,12 +38,19 @@ def _make_image_file(
         An image file in the given format and color space.
     """
     image_buffer = io.BytesIO()
-    reds = random.choices(population=range(0, 255), k=width * height)
-    greens = random.choices(population=range(0, 255), k=width * height)
-    blues = random.choices(population=range(0, 255), k=width * height)
-    pixels = list(zip(reds, greens, blues))
     image = Image.new(color_space, (width, height))
-    image.putdata(pixels)
+    for row_index in range(height):
+        for column_index in range(width):
+            red = random.choice(seq=range(0, 255))
+            green = random.choice(seq=range(0, 255))
+            blue = random.choice(seq=range(0, 255))
+            grey_value = random.choice(seq=range(0, 255))
+            value = {
+                'L': grey_value,
+                'CMYK': (red, green, blue),
+                'RGB': (red, green, blue),
+            }[color_space]
+            image.putpixel(xy=(column_index, row_index), value=value)
     image.save(image_buffer, file_format)
     image_buffer.seek(0)
     return image_buffer
