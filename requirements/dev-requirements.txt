@@ -1,4 +1,4 @@
-Sphinx-Substitution-Extensions==2020.9.30.0
+Sphinx-Substitution-Extensions==2022.2.16
 autoflake==1.4
 black==22.1.0
 check-manifest==0.47
@@ -17,6 +17,7 @@ pyroma==3.2
 pytest-cov==3.0.0  # Measure code coverage
 sphinx-autodoc-typehints==1.17.0
 sphinx==4.4.0
+sphinx-prompt==1.5.0
 sphinxcontrib.spelling==7.3.2
 types-setuptools==57.4.9
 vulture==2.3
