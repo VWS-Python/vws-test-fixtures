@@ -15,7 +15,7 @@ pydocstyle==6.1.1
 pylint==2.14.5
 pyroma==4.0
 pytest-cov==3.0.0  # Measure code coverage
-sphinx-autodoc-typehints==1.19.0
+sphinx-autodoc-typehints==1.19.1
 sphinx==5.1.1
 sphinx-prompt==1.5.0
 sphinxcontrib.spelling==7.6.0
