@@ -41,16 +41,19 @@ def _make_image_file(
     image = Image.new(color_space, (width, height))
     for row_index in range(height):
         for column_index in range(width):
-            red = random.choice(seq=range(0, 255))
-            green = random.choice(seq=range(0, 255))
-            blue = random.choice(seq=range(0, 255))
-            grey_value = random.choice(seq=range(0, 255))
-            value = {
-                'L': grey_value,
-                'CMYK': (red, green, blue),
-                'RGB': (red, green, blue),
-            }[color_space]
-            image.putpixel(xy=(column_index, row_index), value=value)
+            if color_space == 'L':
+                grey = random.choice(seq=range(0, 255))
+                image.putpixel(xy=(column_index, row_index), value=grey)
+            else:
+                assert color_space in ('CMYK', 'RGB')
+                red = random.choice(seq=range(0, 255))
+                green = random.choice(seq=range(0, 255))
+                blue = random.choice(seq=range(0, 255))
+                image.putpixel(
+                    xy=(column_index, row_index),
+                    value=(red, green, blue),
+                )
+
     image.save(image_buffer, file_format)
     image_buffer.seek(0)
     return image_buffer
