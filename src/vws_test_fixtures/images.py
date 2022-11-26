@@ -18,7 +18,7 @@ from PIL import Image
 
 def _make_image_file(
     file_format: str,
-    color_space: Union[Literal['L'], Literal['RGB'], Literal['CMYK']],
+    color_space: Union[Literal["L"], Literal["RGB"], Literal["CMYK"]],
     width: int,
     height: int,
 ) -> io.BytesIO:
@@ -41,11 +41,11 @@ def _make_image_file(
     image = Image.new(color_space, (width, height))
     for row_index in range(height):
         for column_index in range(width):
-            if color_space == 'L':
+            if color_space == "L":
                 grey = random.choice(seq=range(0, 255))
                 image.putpixel(xy=(column_index, row_index), value=grey)
             else:
-                assert color_space in ('CMYK', 'RGB')
+                assert color_space in ("CMYK", "RGB")
                 red = random.choice(seq=range(0, 255))
                 green = random.choice(seq=range(0, 255))
                 blue = random.choice(seq=range(0, 255))
@@ -67,7 +67,7 @@ def high_quality_image() -> io.BytesIO:
 
     At the time of writing, this image gains a tracking rating of 5.
     """
-    path = Path(__file__).parent / 'high_quality_image.jpg'
+    path = Path(__file__).parent / "high_quality_image.jpg"
     return io.BytesIO(path.read_bytes())
 
 
@@ -79,8 +79,8 @@ def image_file_failed_state() -> io.BytesIO:
     """
     # This image gets a "failed" status because it is so small.
     return _make_image_file(
-        file_format='PNG',
-        color_space='RGB',
+        file_format="PNG",
+        color_space="RGB",
         width=1,
         height=1,
     )
@@ -95,8 +95,8 @@ def png_too_large() -> io.BytesIO:
     width = height = 890
 
     return _make_image_file(
-        file_format='PNG',
-        color_space='RGB',
+        file_format="PNG",
+        color_space="RGB",
         width=width,
         height=height,
     )
@@ -109,8 +109,8 @@ def image_file_success_state_low_rating() -> io.BytesIO:
     added to a target and a low rating after processing.
     """
     return _make_image_file(
-        file_format='PNG',
-        color_space='RGB',
+        file_format="PNG",
+        color_space="RGB",
         width=5,
         height=5,
     )
@@ -122,17 +122,17 @@ def corrupted_image_file() -> io.BytesIO:
     Return an image file which is corrupted.
     """
     original_image = _make_image_file(
-        file_format='PNG',
-        color_space='RGB',
+        file_format="PNG",
+        color_space="RGB",
         width=1,
         height=1,
     )
     original_data = original_image.getvalue()
-    corrupted_data = original_data.replace(b'IEND', b'\x00' + b'IEND')
+    corrupted_data = original_data.replace(b"IEND", b"\x00" + b"IEND")
     return io.BytesIO(corrupted_data)
 
 
-@pytest.fixture(params=[('PNG', 'RGB'), ('JPEG', 'RGB'), ('PNG', 'L')])
+@pytest.fixture(params=[("PNG", "RGB"), ("JPEG", "RGB"), ("PNG", "L")])
 def image_files_failed_state(request: SubRequest) -> io.BytesIO:
     """
     Return an image file which is expected to be accepted by the add and
@@ -149,8 +149,8 @@ def image_files_failed_state(request: SubRequest) -> io.BytesIO:
 
 
 @pytest.fixture(
-    params=[('TIFF', 'RGB'), ('JPEG', 'CMYK')],
-    ids=['Not accepted format', 'Not accepted color space'],
+    params=[("TIFF", "RGB"), ("JPEG", "CMYK")],
+    ids=["Not accepted format", "Not accepted color space"],
 )
 def bad_image_file(request: SubRequest) -> io.BytesIO:
     """
@@ -174,5 +174,5 @@ def different_high_quality_image() -> io.BytesIO:
 
     This is necessarily different to ``high_quality_image``.
     """
-    path = Path(__file__).parent / 'different_high_quality_image.jpg'
+    path = Path(__file__).parent / "different_high_quality_image.jpg"
     return io.BytesIO(path.read_bytes())
