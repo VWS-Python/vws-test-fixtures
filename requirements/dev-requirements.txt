@@ -11,7 +11,7 @@ isort==5.10.1
 mypy==0.991
 pip_check_reqs==2.4.2
 pydocstyle==6.1.1
-pylint==2.15.6
+pylint==2.15.7
 pyroma==4.1
 pytest-cov==4.0.0  # Measure code coverage
 sphinx-autodoc-typehints==1.19.5
