@@ -9,7 +9,7 @@ Fixtures for images.
 import io
 import random
 from pathlib import Path
-from typing import Literal, Union
+from typing import Literal
 
 import pytest
 from _pytest.fixtures import SubRequest
@@ -18,7 +18,7 @@ from PIL import Image
 
 def _make_image_file(
     file_format: str,
-    color_space: Union[Literal["L"], Literal["RGB"], Literal["CMYK"]],
+    color_space: Literal["L"] | Literal["RGB"] | Literal["CMYK"],
     width: int,
     height: int,
 ) -> io.BytesIO:
@@ -71,7 +71,7 @@ def high_quality_image() -> io.BytesIO:
     return io.BytesIO(path.read_bytes())
 
 
-@pytest.fixture
+@pytest.fixture()
 def image_file_failed_state() -> io.BytesIO:
     """
     Return an image file which is expected to be accepted by the add and
@@ -86,7 +86,7 @@ def image_file_failed_state() -> io.BytesIO:
     )
 
 
-@pytest.fixture
+@pytest.fixture()
 def png_too_large() -> io.BytesIO:
     """
     Return a PNG file which has dimensions which are too large to be added to
@@ -102,7 +102,7 @@ def png_too_large() -> io.BytesIO:
     )
 
 
-@pytest.fixture
+@pytest.fixture()
 def image_file_success_state_low_rating() -> io.BytesIO:
     """
     Return an image file which is expected to have a 'success' status when
@@ -116,7 +116,7 @@ def image_file_success_state_low_rating() -> io.BytesIO:
     )
 
 
-@pytest.fixture
+@pytest.fixture()
 def corrupted_image_file() -> io.BytesIO:
     """
     Return an image file which is corrupted.
@@ -128,7 +128,7 @@ def corrupted_image_file() -> io.BytesIO:
         height=1,
     )
     original_data = original_image.getvalue()
-    corrupted_data = original_data.replace(b"IEND", b"\x00" + b"IEND")
+    corrupted_data = original_data.replace(b"IEND", b"\x00IEND")
     return io.BytesIO(corrupted_data)
 
 
