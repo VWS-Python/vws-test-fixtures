@@ -103,37 +103,26 @@ log_cli = true
 [tool.check-manifest]
 
 ignore = [
-	"*.enc",
-	".appveyor.yml",
-	".coveragerc",
-	".isort.cfg",
-	".markdownlint.json",
-	".pydocstyle",
-	".remarkrc",
-	".readthedocs.yml",
-	"readthedocs.yaml",
-	".style.yapf",
-	".travis.yml",
-	"CHANGELOG.rst",
-	"CODE_OF_CONDUCT.rst",
-	"CONTRIBUTING.rst",
-	"LICENSE",
-	"Makefile",
-	"ci",
-	"ci/**",
-	"codecov.yaml",
-	"doc8.ini",
-	"docs",
-	"docs/**",
-	".git_archival.txt",
-	"pylintrc",
-	"pytest.ini",
-	"spelling_private_dict.txt",
-	"tests",
-	"tests-pylintrc",
-	"tests/**",
-	"vuforia_secrets.env.example",
-	"lint.mk",
+    "*.enc",
+    "readthedocs.yaml",
+    "CHANGELOG.rst",
+    "CODE_OF_CONDUCT.rst",
+    "CONTRIBUTING.rst",
+    "LICENSE",
+    "Makefile",
+    "ci",
+    "ci/**",
+    "codecov.yaml",
+    "doc8.ini",
+    "docs",
+    "docs/**",
+    ".git_archival.txt",
+    "spelling_private_dict.txt",
+    "tests",
+    "tests-pylintrc",
+    "tests/**",
+    "vuforia_secrets.env.example",
+    "lint.mk",
 ]
 
 [tool.doc8]
@@ -152,23 +141,48 @@ ignore_path = [
 
 strict = true
 
-[tool.pydocstyle]
-# We do not have summary lines, care about "mood", or need sections with
-# dash underlined titles.
-ignore = [
-  'D200',
-  'D205',
-  'D400',
-  'D415',
-  'D202',
-  'D203',
-  'D212',
-  'D401',
-  'D406',
-  'D407',
-  'D413',
-]
-
 [build-system]
 requires = ["setuptools", "pip", "wheel"]
 build-backend = "setuptools.build_meta"
+
+[tool.ruff]
+select = ["ALL"]
+
+ignore = [
+    # We do not annotate the type of 'self'.
+    "ANN101",
+    # We are happy to manage our own "complexity".
+    "C901",
+    # Allow our chosen docstring line-style - no one-line summary.
+    "D200",
+    "D203",
+    "D205",
+    "D212",
+    "D213",
+    # Allow backslashes in a docstring.
+    # See https://click.palletsprojects.com/en/8.0.x/documentation/#preventing-rewrapping.
+    "D301",
+    # It is too much work to make every docstring imperative.
+    "D401",
+    # We ignore some docstyle errors which do not apply to Google style
+    # docstrings.
+    "D406",
+    "D407",
+    # We have an existing interface to support and so we do not want to change
+    # exception names.
+    "N818",
+    # Ignore "too-many-*" errors as they seem to get in the way more than
+    # helping.
+    "PLR0912",
+    "PLR0913",
+    # Allow 'assert' as we use it for tests.
+    "S101",
+    # Allow imports which are only used for type checking to be outside type
+    # checking blocks.
+    "TCH002",
+    "TCH003",
+    # We use quoted annotations so that we can use types from packages which
+    # may not be installed.
+    "UP037",
+]
+
