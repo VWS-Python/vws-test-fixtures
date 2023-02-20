@@ -15,5 +15,5 @@ sphinx==6.1.3
 sphinx-prompt==1.5.0
 sphinxcontrib.spelling==8.0.0
 types-setuptools==67.3.0.1
-types-Pillow==9.4.0.12
+types-Pillow==9.4.0.13
 vulture==2.7
