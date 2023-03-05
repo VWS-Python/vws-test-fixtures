@@ -145,6 +145,9 @@ strict = true
 requires = ["setuptools", "pip", "wheel"]
 build-backend = "setuptools.build_meta"
 
+[tool.distutils.bdist_wheel]
+universal = true
+
 [tool.ruff]
 select = ["ALL"]
 
@@ -186,3 +189,35 @@ ignore = [
     "UP037",
 ]
 
+[project]
+authors = [ { name = "Adam Dangoor", email = "adamdangoor@gmail.com"} ]
+classifiers = [
+    "Operating System :: POSIX",
+    "Environment :: Web Environment",
+    "Programming Language :: Python :: 3.11",
+    "License :: OSI Approved :: MIT License",
+    "Development Status :: 5 - Production/Stable",
+    "Framework :: Pytest",
+]
+description = "Test fixtures for testing code which works with the Vuforia Web Services (VWS) API"
+dynamic = ["version"]
+keywords = ["vuforia", "vws"]
+license = { file = "LICENSE" }
+name = "vws-test-fixtures"
+readme = { file = "README.rst", content-type = "text/x-rst"}
+requires-python = ">=3.10"
+
+[project.urls]
+Source = "https://github.com/VWS-Python/vws-test-fixtures"
+
+[tool.setuptools]
+zip-safe = false
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+vws_test_fixtures = ["py.typed"]
+
+[project.entry-points.pytest11]
+vws_test_fixtures = "vws_test_fixtures.plugin"
