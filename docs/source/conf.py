@@ -6,8 +6,7 @@ Configuration for Sphinx.
 # pylint: disable=invalid-name
 
 import datetime
-
-from pkg_resources import get_distribution
+import importlib.metadata
 
 project = "VWS-Test-Fixtures"
 author = "Adam Dangoor"
@@ -33,9 +32,9 @@ project_copyright = f"{year}, {author}"
 # |version| and |release|, also used in various other places throughout the
 # built documents.
 #
-# Use ``pkg_resources`` as per
+# Use ``importlib.metadata.version`` as per
 # https://github.com/pypa/setuptools_scm#usage-from-sphinx.
-version = get_distribution(project).version
+version = importlib.metadata.version(distribution_name=project)
 _month, _day, _year, *_ = version.split(".")
 release = f"{_month}.{_day}.{_year}"
 
@@ -53,17 +52,18 @@ html_theme_options = {
     "sidebar_hide_name": False,
 }
 
+python_minumum_supported_version = "3.11"
 # Output file base name for HTML help builder.
 htmlhelp_basename = "VWSTESTFIXTURESdoc"
 autoclass_content = "init"
 intersphinx_mapping = {
-    "python": ("https://docs.python.org/3.8", None),
+    "python": (
+        f"https://docs.python.org/{python_minumum_supported_version}",
+        None,
+    ),
 }
 nitpicky = True
 warning_is_error = True
-nitpick_ignore = [
-    ("py:class", "_io.BytesIO"),
-]
 
 autoclass_content = "both"
 
