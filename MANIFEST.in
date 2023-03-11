@@ -1,4 +1,3 @@
-include requirements/*.txt
 include src/vws_test_fixtures/py.typed
 include src/vws_test_fixtures/high_quality_image.jpg
 include src/vws_test_fixtures/different_high_quality_image.jpg
