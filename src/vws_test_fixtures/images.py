@@ -2,18 +2,22 @@
 Fixtures for images.
 """
 
-# Coverage is weird in this file - it seems that because this is an entry
-# point, this file's imports and image function definitions are not counted.
-# See https://github.com/pytest-dev/pytest-cov/issues/372.
+# Coverage is weird in this file - see
+# https://pytest-cov.readthedocs.io/en/latest/plugins.html
+# for environment variables we have to set to get coverage to work.
+
+from __future__ import annotations
 
 import io
 import random
 from pathlib import Path
-from typing import Literal
+from typing import TYPE_CHECKING, Literal
 
 import pytest
-from _pytest.fixtures import SubRequest
 from PIL import Image
+
+if TYPE_CHECKING:
+    from _pytest.fixtures import SubRequest
 
 
 def _make_image_file(
