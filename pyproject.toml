@@ -216,7 +216,7 @@ dev = [
     "freezegun==1.2.2",
     "furo==2022.12.7",
     "mypy==1.1.1",
-    "pdm==2.4.8",
+    "pdm==2.4.9",
     "pip_check_reqs==2.4.4",
     "pylint==2.17.0",
     "pyroma==4.2",
