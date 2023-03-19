@@ -19,10 +19,27 @@ Example usage
 
 .. code:: python
 
+   import io
+
    # A test to be run by pytest
    def test_example(high_quality_image: io.BytesIO) -> None:
        image_file_bytes = high_quality_image.getvalue()
        ...
+
+.. -> test_src
+
+.. invisible-code-block: python
+
+   import pathlib
+   import subprocess
+   import tempfile
+
+   import pytest
+
+   with tempfile.TemporaryDirectory() as tmp_dir:
+       test_file = pathlib.Path(tmp_dir) / 'test_src.py'
+       test_file.write_text(test_src)
+       subprocess.check_output(["python", "-m", "pytest", test_file, "--basetemp", test_file.parent])
 
 ``high_quality_image`` returns an image file which is expected to have a 'success' status when added to a target, and a high tracking rating.
 
