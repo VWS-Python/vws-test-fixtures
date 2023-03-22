@@ -12,6 +12,7 @@ lint: \
     doc8 \
     linkcheck \
     mypy \
+    pyright \
     pip-extra-reqs \
     pip-missing-reqs \
     pyroma \
