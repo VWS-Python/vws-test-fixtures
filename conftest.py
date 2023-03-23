@@ -2,7 +2,9 @@
 
 from doctest import ELLIPSIS
 
-from sybil import Sybil
+from sybil import (
+    Sybil,  # pyright: reportMissingTypeStubs=false,reportUnknownVariableType=false
+)
 from sybil.parsers.rest import (
     CaptureParser,
     DocTestParser,
@@ -16,4 +18,4 @@ pytest_collect_file = Sybil(
         CaptureParser(),
     ],
     patterns=["*.rst", "*.py"],
-).pytest()
+).pytest()  # pyright: reportUnknownMemberType=false
