@@ -27,7 +27,7 @@ def _make_image_file(
     height: int,
 ) -> io.BytesIO:
     """
-    Return an image file in the given format and color space.
+    An image file in the given format and color space.
 
     The image file is filled with randomly colored pixels.
 
@@ -66,7 +66,7 @@ def _make_image_file(
 @pytest.fixture()
 def high_quality_image() -> io.BytesIO:
     """
-    Return an image file which is expected to have a 'success' status when
+    An image file which is expected to have a 'success' status when
     added to a target and a high tracking rating.
 
     At the time of writing, this image gains a tracking rating of 5.
@@ -78,7 +78,7 @@ def high_quality_image() -> io.BytesIO:
 @pytest.fixture()
 def image_file_failed_state() -> io.BytesIO:
     """
-    Return an image file which is expected to be accepted by the add and
+    An image file which is expected to be accepted by the add and
     update target endpoints, but get a "failed" status.
     """
     # This image gets a "failed" status because it is so small.
@@ -109,7 +109,7 @@ def png_too_large() -> io.BytesIO:
 @pytest.fixture()
 def image_file_success_state_low_rating() -> io.BytesIO:
     """
-    Return an image file which is expected to have a 'success' status when
+    An image file which is expected to have a 'success' status when
     added to a target and a low rating after processing.
     """
     return _make_image_file(
@@ -123,7 +123,7 @@ def image_file_success_state_low_rating() -> io.BytesIO:
 @pytest.fixture()
 def corrupted_image_file() -> io.BytesIO:
     """
-    Return an image file which is corrupted.
+    An image file which is corrupted.
     """
     original_image = _make_image_file(
         file_format="PNG",
@@ -139,7 +139,7 @@ def corrupted_image_file() -> io.BytesIO:
 @pytest.fixture(params=[("PNG", "RGB"), ("JPEG", "RGB"), ("PNG", "L")])
 def image_files_failed_state(request: SubRequest) -> io.BytesIO:
     """
-    Return an image file which is expected to be accepted by the add and
+    An image file which is expected to be accepted by the add and
     update target endpoints, but get a "failed" status.
     """
     # These images get a "failed" status because they are so small.
@@ -158,7 +158,7 @@ def image_files_failed_state(request: SubRequest) -> io.BytesIO:
 )
 def bad_image_file(request: SubRequest) -> io.BytesIO:
     """
-    Return an image file which is expected to cause a `BadImage` result when an
+    An image file which is expected to cause a `BadImage` result when an
     attempt is made to add it to the target database.
     """
     file_format, color_space = request.param
@@ -173,7 +173,7 @@ def bad_image_file(request: SubRequest) -> io.BytesIO:
 @pytest.fixture()
 def different_high_quality_image() -> io.BytesIO:
     """
-    Return an image file which is expected to have a 'success' status when
+    An image file which is expected to have a 'success' status when
     added to a target and a high tracking rating.
 
     This is necessarily different to ``high_quality_image``.
