@@ -232,7 +232,7 @@ dev = [
     "freezegun==1.2.2",
     "furo==2023.3.27",
     "mypy==1.2.0",
-    "pdm==2.5.5",
+    "pdm==2.6.0",
     "pip_check_reqs==2.4.4",
     "pylint==2.17.3",
     "pyright==1.1.302",
