@@ -231,7 +231,7 @@ dev = [
     "doc8==1.1.1",
     "freezegun==1.2.2",
     "furo==2023.3.27",
-    "mypy==1.2.0",
+    "mypy==1.3.0",
     "pdm==2.6.1",
     "pip_check_reqs==2.4.4",
     "pylint==2.17.4",
