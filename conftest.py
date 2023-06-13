@@ -21,5 +21,5 @@ sybil_obj = Sybil(
 )
 
 pytest_collect_file = (  # pyright: ignore [reportUnknownVariableType]
-    sybil_obj.pytest()
+    sybil_obj.pytest()  # pyright: ignore [reportUnknownMemberType]
 )
