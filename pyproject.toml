@@ -245,7 +245,7 @@ dev = [
     "sphinx==7.0.1",
     "sphinxcontrib.spelling==8.0.0",
     "sybil==5.0.2",
-    "types-Pillow==10.0.0.0",
+    "types-Pillow==10.0.0.1",
     "vulture==2.7",
 ]
 packaging = []
