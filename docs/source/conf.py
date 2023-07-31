@@ -53,13 +53,13 @@ html_theme_options = {
     "sidebar_hide_name": False,
 }
 
-python_minumum_supported_version = "3.11"
+python_minimum_supported_version = "3.11"
 # Output file base name for HTML help builder.
 htmlhelp_basename = "VWSTESTFIXTURESdoc"
 autoclass_content = "init"
 intersphinx_mapping = {
     "python": (
-        f"https://docs.python.org/{python_minumum_supported_version}",
+        f"https://docs.python.org/{python_minimum_supported_version}",
         None,
     ),
 }
