@@ -22,7 +22,7 @@ if TYPE_CHECKING:
 
 def _make_image_file(
     file_format: str,
-    color_space: Literal["L"] | Literal["RGB"] | Literal["CMYK"],
+    color_space: Literal["L", "RGB", "CMYK"],
     width: int,
     height: int,
 ) -> io.BytesIO:
