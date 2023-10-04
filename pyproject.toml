@@ -157,8 +157,8 @@ ignore_missing_imports = true
 requires = [
      "pip",
      "setuptools",
-     "setuptools-scm-git-archive==1.4",
-     "setuptools_scm[toml]==7.1.0",
+     "setuptools-scm-git-archive>=1.4",
+     "setuptools_scm[toml]>=7.1.0",
      "wheel",
  ]
 build-backend = "setuptools.build_meta"
@@ -217,7 +217,7 @@ keywords = ["vuforia", "vws"]
 license = { file = "LICENSE" }
 name = "vws-test-fixtures"
 readme = { file = "README.rst", content-type = "text/x-rst"}
-requires-python = ">=3.10"
+requires-python = ">=3.12"
 dependencies = [
     "Pillow",
     "pytest",
