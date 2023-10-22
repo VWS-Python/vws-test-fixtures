@@ -10,7 +10,7 @@ Installation
 
    pip install vws-test-fixtures
 
-This is tested on Python 3.11+.
+This is tested on Python 3.12+.
 
 Example usage
 -------------

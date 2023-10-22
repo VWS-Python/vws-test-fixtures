@@ -53,7 +53,7 @@ html_theme_options = {
     "sidebar_hide_name": False,
 }
 
-python_minimum_supported_version = "3.11"
+python_minimum_supported_version = "3.12"
 # Output file base name for HTML help builder.
 htmlhelp_basename = "VWSTESTFIXTURESdoc"
 autoclass_content = "init"
