@@ -82,10 +82,6 @@
     # --spelling-private-dict-file option instead of raising a message.
     spelling-store-unknown-words = 'no'
 
-[tool.black]
-
-line-length = 79
-
 [tool.isort]
 
 multi_line_output = 3
@@ -167,6 +163,7 @@ universal = true
 
 [tool.ruff]
 select = ["ALL"]
+line-length = 79
 
 ignore = [
     # We do not annotate the type of 'self'.
@@ -225,7 +222,6 @@ dependencies = [
 [project.optional-dependencies]
 dev = [
     "Sphinx-Substitution-Extensions==2022.2.16",
-    "black==23.10.1",
     "check-manifest==0.49",
     "doc8==1.1.1",
     "freezegun==1.2.2",
