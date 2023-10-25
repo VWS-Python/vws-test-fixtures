@@ -23,7 +23,7 @@ lint: \
 
 .PHONY: fix-lint
 fix-lint: \
-	fix-pyproject-fmt \
+    fix-pyproject-fmt \
     fix-ruff
 
 .PHONY: docs
