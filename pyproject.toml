@@ -230,7 +230,7 @@ dev = [
     "pyright==1.1.344",
     "pyroma==4.2",
     "pytest-cov==4.1",
-    "ruff==0.1.9",
+    "ruff==0.1.11",
     "sphinx==7.2.6",
     "sphinx-autodoc-typehints==1.25.2",
     "sphinx-autofixture==0.4",
