@@ -258,5 +258,9 @@ vws_test_fixtures = ["py.typed"]
 vws_test_fixtures = "vws_test_fixtures.plugin"
 [tool.setuptools_scm]
 
+ [tool.pyproject-fmt]
+indent = 4
+keep_full_version = false
+
 [tool.pyright]
 typeCheckingMode = "strict"
