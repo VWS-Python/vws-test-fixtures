@@ -213,7 +213,7 @@ readme = { file = "README.rst", content-type = "text/x-rst"}
 requires-python = ">=3.12"
 dependencies = [
     "Pillow",
-    "pytest",
+    "pytest<8", # We pin pytest to avoid conflict with Sybil. See https://github.com/simplistix/sybil/issues/107.
 ]
 
 [project.optional-dependencies]
