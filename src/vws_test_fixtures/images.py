@@ -11,13 +11,10 @@ from __future__ import annotations
 import io
 import random
 from pathlib import Path
-from typing import TYPE_CHECKING, Literal
+from typing import Literal
 
 import pytest
 from PIL import Image
-
-if TYPE_CHECKING:
-    from _pytest.fixtures import SubRequest
 
 
 def _make_image_file(
@@ -137,7 +134,7 @@ def corrupted_image_file() -> io.BytesIO:
 
 
 @pytest.fixture(params=[("PNG", "RGB"), ("JPEG", "RGB"), ("PNG", "L")])
-def image_files_failed_state(request: SubRequest) -> io.BytesIO:
+def image_files_failed_state(request: pytest.FixtureRequest) -> io.BytesIO:
     """
     An image file which is expected to be accepted by the add and
     update target endpoints, but get a "failed" status.
@@ -156,7 +153,7 @@ def image_files_failed_state(request: SubRequest) -> io.BytesIO:
     params=[("TIFF", "RGB"), ("JPEG", "CMYK")],
     ids=["Not accepted format", "Not accepted color space"],
 )
-def bad_image_file(request: SubRequest) -> io.BytesIO:
+def bad_image_file(request: pytest.FixtureRequest) -> io.BytesIO:
     """
     An image file which is expected to cause a `BadImage` result when an
     attempt is made to add it to the target database.
