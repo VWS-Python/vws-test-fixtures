@@ -214,7 +214,7 @@ readme = { file = "README.rst", content-type = "text/x-rst"}
 requires-python = ">=3.12"
 dependencies = [
     "Pillow",
-    "pytest<8", # We pin pytest to avoid conflict with Sybil. See https://github.com/simplistix/sybil/issues/107.
+    "pytest",
 ]
 
 [project.optional-dependencies]
@@ -238,7 +238,7 @@ dev = [
     "sphinx-prompt==1.8",
     "Sphinx-Substitution-Extensions==2022.2.16",
     "sphinxcontrib.spelling==8",
-    "sybil==6.0.2",
+    "sybil==6.0.3",
     "types-Pillow==10.2.0.20240125",
     "vulture==2.11",
 ]
