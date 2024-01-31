@@ -7,19 +7,20 @@ SPHINXOPTS := -W
 
 .PHONY: lint
 lint: \
+    actionlint \
     check-manifest \
     doc8 \
     linkcheck \
     mypy \
-    pyright \
     pip-extra-reqs \
     pip-missing-reqs \
+    pylint \
     pyproject-fmt \
+    pyright \
     pyroma \
     ruff \
     spelling \
-    vulture \
-    pylint
+    vulture
 
 .PHONY: fix-lint
 fix-lint: \
