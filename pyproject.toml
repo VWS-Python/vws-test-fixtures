@@ -115,7 +115,7 @@ include_trailing_comma = true
 branch = true
 
 [tool.coverage.report]
-exclude_lines = ["pragma: no cover", "if TYPE_CHECKING:"]
+exclude_also = ["if TYPE_CHECKING:"]
 
 [tool.pytest.ini_options]
 
