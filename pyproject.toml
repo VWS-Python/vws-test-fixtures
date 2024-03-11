@@ -260,7 +260,7 @@ dev = [
     "pyright==1.1.353",
     "pyroma==4.2",
     "pytest-cov==4.1",
-    "ruff==0.3.1",
+    "ruff==0.3.2",
     "sphinx==7.2.6",
     "sphinx-autofixture==0.4",
     "sphinx-prompt==1.8",
