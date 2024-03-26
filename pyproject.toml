@@ -268,7 +268,6 @@ dev = [
     "sphinxcontrib.spelling==8",
     "sybil==6.0.3",
     "types-Pillow==10.2.0.20240324",
-    "uv==0.1.24",
     "vulture==2.11",
 ]
 packaging = [
@@ -295,3 +294,6 @@ keep_full_version = true
 [tool.pyright]
 reportUnnecessaryTypeIgnoreComment = true
 typeCheckingMode = "strict"
+
+[tool.deptry]
+pep621_dev_dependency_groups = ["dev"]
