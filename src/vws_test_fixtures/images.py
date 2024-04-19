@@ -9,7 +9,7 @@ Fixtures for images.
 from __future__ import annotations
 
 import io
-import random
+import secrets
 from pathlib import Path
 from typing import Literal
 
@@ -43,13 +43,13 @@ def _make_image_file(
     for row_index in range(height):
         for column_index in range(width):
             if color_space == "L":
-                grey = random.choice(seq=range(255))
+                grey = secrets.choice(seq=range(255))
                 image.putpixel(xy=(column_index, row_index), value=grey)
             else:
                 assert color_space in {"CMYK", "RGB"}
-                red = random.choice(seq=range(255))
-                green = random.choice(seq=range(255))
-                blue = random.choice(seq=range(255))
+                red = secrets.choice(seq=range(255))
+                green = secrets.choice(seq=range(255))
+                blue = secrets.choice(seq=range(255))
                 image.putpixel(
                     xy=(column_index, row_index),
                     value=(red, green, blue),
