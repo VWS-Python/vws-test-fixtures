@@ -258,7 +258,7 @@ dev = [
     "Sphinx-Substitution-Extensions==2024.2.25",
     "sphinxcontrib.spelling==8",
     "sybil==6.1.1",
-    "types-Pillow==10.2.0.20240423",
+    "types-Pillow==10.2.0.20240511",
     "vulture==2.11",
 ]
 packaging = [
