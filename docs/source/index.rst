@@ -57,4 +57,3 @@ Reference
    contributing
    release-process
    changelog
-
