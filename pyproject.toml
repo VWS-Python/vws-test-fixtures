@@ -53,7 +53,7 @@ optional-dependencies.dev = [
     "pyroma==4.2",
     "pytest-cov==5.0.0",
     "ruff==0.5.1",
-    "sphinx==7.3.7",
+    "sphinx==7.4.3",
     "sphinx-autofixture==0.4",
     "sphinx-prompt==1.8",
     "sphinx-substitution-extensions==2024.2.25",
