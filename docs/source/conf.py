@@ -13,7 +13,6 @@ author = "Adam Dangoor"
 
 extensions = [
     "sphinx_copybutton",
-    "sphinx-prompt",
     "sphinx.ext.intersphinx",
     "sphinx.ext.napoleon",
     "sphinx_autofixture",
