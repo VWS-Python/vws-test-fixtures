@@ -12,7 +12,7 @@ project = "VWS-Test-Fixtures"
 author = "Adam Dangoor"
 
 extensions = [
-    "sphinx-prompt",
+    "sphinx_copybutton",
     "sphinx.ext.intersphinx",
     "sphinx.ext.napoleon",
     "sphinx_autofixture",
