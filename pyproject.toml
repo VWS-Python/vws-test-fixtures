@@ -56,7 +56,7 @@ optional-dependencies.dev = [
     "sphinx==7.4.7",
     "sphinx-autofixture==0.4",
     "sphinx-copybutton==0.5.2",
-    "sphinx-substitution-extensions==2024.2.25",
+    "sphinx-substitution-extensions==2024.8.6",
     "sphinxcontrib-spelling==8",
     "sybil==6.1.1",
     "types-pillow==10.2.0.20240520",
