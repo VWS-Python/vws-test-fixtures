@@ -60,7 +60,7 @@ def _make_image_file(
     return image_buffer
 
 
-@pytest.fixture()
+@pytest.fixture
 def high_quality_image() -> io.BytesIO:
     """
     An image file which is expected to have a 'success' status when
@@ -72,7 +72,7 @@ def high_quality_image() -> io.BytesIO:
     return io.BytesIO(path.read_bytes())
 
 
-@pytest.fixture()
+@pytest.fixture
 def image_file_failed_state() -> io.BytesIO:
     """
     An image file which is expected to be accepted by the add and
@@ -87,7 +87,7 @@ def image_file_failed_state() -> io.BytesIO:
     )
 
 
-@pytest.fixture()
+@pytest.fixture
 def png_too_large() -> io.BytesIO:
     """
     Return a PNG file which has dimensions which are too large to be added to
@@ -103,7 +103,7 @@ def png_too_large() -> io.BytesIO:
     )
 
 
-@pytest.fixture()
+@pytest.fixture
 def image_file_success_state_low_rating() -> io.BytesIO:
     """
     An image file which is expected to have a 'success' status when
@@ -117,7 +117,7 @@ def image_file_success_state_low_rating() -> io.BytesIO:
     )
 
 
-@pytest.fixture()
+@pytest.fixture
 def corrupted_image_file() -> io.BytesIO:
     """
     An image file which is corrupted.
@@ -167,7 +167,7 @@ def bad_image_file(request: pytest.FixtureRequest) -> io.BytesIO:
     )
 
 
-@pytest.fixture()
+@pytest.fixture
 def different_high_quality_image() -> io.BytesIO:
     """
     An image file which is expected to have a 'success' status when
