@@ -59,9 +59,9 @@ optional-dependencies.dev = [
     "sphinx-substitution-extensions==2024.8.6",
     "sphinxcontrib-spelling==8",
     "sybil==6.1.1",
+    "typeguard==4.3.0",
     "types-pillow==10.2.0.20240520",
     "vulture==2.11",
-    "typeguard==4.3.0",
 ]
 optional-dependencies.packaging = [
 ]
