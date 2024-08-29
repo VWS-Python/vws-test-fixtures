@@ -6,8 +6,6 @@ Fixtures for images.
 # https://pytest-cov.readthedocs.io/en/latest/plugins.html
 # for environment variables we have to set to get coverage to work.
 
-from __future__ import annotations
-
 import io
 import secrets
 from pathlib import Path

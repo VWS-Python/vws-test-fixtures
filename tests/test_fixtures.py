@@ -2,12 +2,7 @@
 Test for the new fixtures.
 """
 
-from __future__ import annotations
-
-from typing import TYPE_CHECKING
-
-if TYPE_CHECKING:
-    import io
+import io
 
 
 def test_image_fixtures(
