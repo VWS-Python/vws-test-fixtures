@@ -2,6 +2,7 @@ admin
 api
 args
 auth
+beartype
 changelog
 cli
 linter
