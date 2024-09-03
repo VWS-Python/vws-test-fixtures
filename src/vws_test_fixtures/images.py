@@ -39,7 +39,7 @@ def _make_image_file(
         An image file in the given format and color space.
     """
     image_buffer = io.BytesIO()
-    image = Image.new(color_space, (width, height))
+    image = Image.new(mode=color_space, size=(width, height))
     for row_index in range(height):
         for column_index in range(width):
             if color_space == "L":
@@ -55,7 +55,7 @@ def _make_image_file(
                     value=(red, green, blue),
                 )
 
-    image.save(image_buffer, file_format)
+    image.save(fp=image_buffer, format=file_format)
     image_buffer.seek(0)
     return image_buffer
 
@@ -69,7 +69,7 @@ def high_quality_image() -> io.BytesIO:
     At the time of writing, this image gains a tracking rating of 5.
     """
     path = Path(__file__).parent / "high_quality_image.jpg"
-    return io.BytesIO(path.read_bytes())
+    return io.BytesIO(initial_bytes=path.read_bytes())
 
 
 @pytest.fixture
@@ -130,7 +130,7 @@ def corrupted_image_file() -> io.BytesIO:
     )
     original_data = original_image.getvalue()
     corrupted_data = original_data.replace(b"IEND", b"\x00IEND")
-    return io.BytesIO(corrupted_data)
+    return io.BytesIO(initial_bytes=corrupted_data)
 
 
 @pytest.fixture(params=[("PNG", "RGB"), ("JPEG", "RGB"), ("PNG", "L")])
@@ -176,4 +176,4 @@ def different_high_quality_image() -> io.BytesIO:
     This is necessarily different to ``high_quality_image``.
     """
     path = Path(__file__).parent / "different_high_quality_image.jpg"
-    return io.BytesIO(path.read_bytes())
+    return io.BytesIO(initial_bytes=path.read_bytes())
