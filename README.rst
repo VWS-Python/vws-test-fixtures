@@ -54,7 +54,7 @@ Full Documentation
 
 See the `full documentation <https://vws-test-fixtures.readthedocs.io/en/latest>`__.
 
-.. |Build Status| image:: https://github.com/VWS-Python/vws-test-fixtures/workflows/CI/badge.svg
+.. |Build Status| image:: https://github.com/VWS-Python/vws-test-fixtures/actions/workflows/ci.yml/badge.svg?branch=main
    :target: https://github.com/VWS-Python/vws-test-fixtures/actions
 .. |codecov| image:: https://codecov.io/gh/VWS-Python/vws-test-fixtures/branch/main/graph/badge.svg
    :target: https://codecov.io/gh/VWS-Python/vws-test-fixtures
