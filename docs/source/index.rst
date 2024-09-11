@@ -6,7 +6,7 @@
 Installation
 ------------
 
-.. code:: sh
+.. code-block:: sh
 
    pip install vws-test-fixtures
 
@@ -14,6 +14,11 @@ This is tested on Python 3.12+.
 
 Example usage
 -------------
+
+.. Use "code" rather than "code-block" to avoid having this picked up
+.. by both the `PythonCodeBlockParser` and the `CaptureParser` from Sybil.
+.. Sybil does not recognize `code` as a code block, so it does not pick it up.
+.. If they both pick it up, we get an error about overlapping regions.
 
 .. code:: python
 
