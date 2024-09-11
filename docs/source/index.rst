@@ -6,7 +6,7 @@
 Installation
 ------------
 
-.. code:: sh
+.. code-block:: sh
 
    pip install vws-test-fixtures
 
@@ -15,7 +15,7 @@ This is tested on Python 3.12+.
 Example usage
 -------------
 
-.. code:: python
+.. code-block:: python
 
    import io
 
