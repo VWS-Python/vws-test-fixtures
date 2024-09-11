@@ -6,7 +6,7 @@
 Installation
 ------------
 
-.. code-block:: sh
+.. code-block:: shell
 
    pip install vws-test-fixtures
 
