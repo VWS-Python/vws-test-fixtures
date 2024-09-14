@@ -17,12 +17,16 @@ Example usage
 
 .. code-block:: python
 
+   """Run a test which uses a high quality image."""
+
    import io
 
-   # A test to be run by pytest
-   def test_example(high_quality_image: io.BytesIO) -> None:
+
+   def test_high_quality_image(high_quality_image: io.BytesIO) -> None:
+       """Test that a high quality image is given."""
        image_file_bytes = high_quality_image.getvalue()
-       ...
+       minimum_image_size = 1000
+       assert len(image_file_bytes) >= minimum_image_size
 
 All fixtures
 ------------
