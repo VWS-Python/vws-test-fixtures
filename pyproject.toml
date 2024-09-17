@@ -67,7 +67,7 @@ optional-dependencies.dev = [
     "sybil==7.1.1",
     "sybil-extras==2024.9.16",
     "types-pillow==10.2.0.20240822",
-    "vulture==2.11",
+    "vulture==2.12",
 ]
 optional-dependencies.packaging = [
 ]
