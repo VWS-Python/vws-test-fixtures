@@ -347,3 +347,6 @@ ignore_names = [
     "templates_path",
     "warning_is_error",
 ]
+
+# Duplicate some of .gitignore
+exclude = [ ".venv" ]
