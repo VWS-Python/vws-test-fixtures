@@ -11,6 +11,7 @@ if TYPE_CHECKING:
 
 
 def test_image_fixtures(
+    *,
     high_quality_image: io.BytesIO,
     image_file_failed_state: io.BytesIO,
     png_too_large: io.BytesIO,
