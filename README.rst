@@ -12,7 +12,7 @@ Installation
 
    pip install vws-test-fixtures
 
-This is tested on Python 3.12+.
+This is tested on Python |minimum-python-version|\+.
 
 Example usage
 -------------
@@ -52,3 +52,4 @@ See the `full documentation <https://vws-test-fixtures.readthedocs.io/en/latest>
    :alt: Documentation Status
 .. |PyPI| image:: https://badge.fury.io/py/VWS-Test-Fixtures.svg
    :target: https://badge.fury.io/py/VWS-Test-Fixtures
+.. |minimum-python-version| replace:: 3.12
