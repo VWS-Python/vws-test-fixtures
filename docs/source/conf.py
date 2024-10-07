@@ -5,7 +5,6 @@ Configuration for Sphinx.
 
 # pylint: disable=invalid-name
 
-import datetime
 import importlib.metadata
 
 from packaging.specifiers import SpecifierSet
@@ -26,8 +25,7 @@ templates_path = ["_templates"]
 source_suffix = ".rst"
 master_doc = "index"
 
-year = datetime.datetime.now(tz=datetime.UTC).year
-project_copyright = f"{year}, {author}"
+project_copyright = f"%Y, {author}"
 
 # Exclude the prompt from copied code with sphinx_copybutton.
 # https://sphinx-copybutton.readthedocs.io/en/latest/use.html#automatic-exclusion-of-prompts-from-the-copies.
