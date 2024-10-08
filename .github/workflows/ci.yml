@@ -29,9 +29,11 @@ jobs:
 
       - name: "Lint"
         run: |
-          uv run --all-extras --python=${{ matrix.python-version }} pre-commit run --all-files --hook-stage pre-commit --verbose
-          uv run --all-extras --python=${{ matrix.python-version }} pre-commit run --all-files --hook-stage pre-push --verbose
-          uv run --all-extras --python=${{ matrix.python-version }} pre-commit run --all-files --hook-stage manual --verbose
+          uv run --extra=dev pre-commit run --all-files --hook-stage pre-commit --verbose
+          uv run --extra=dev pre-commit run --all-files --hook-stage pre-push --verbose
+          uv run --extra=dev pre-commit run --all-files --hook-stage manual --verbose
+        env:
+          UV_PYTHON: ${{ matrix.python-version }}
 
       - name: "Run tests"
         env:
@@ -42,10 +44,11 @@ jobs:
           COV_CORE_CONFIG: .coveragerc
           COV_CORE_SOURCE: src
           COV_CORE_DATAFILE: .coverage.eager
+          UV_PYTHON: ${{ matrix.python-version }}
         run: |
           # We run tests against "." and not the tests directory as we test the README
           # and documentation.
-          uv run --all-extras --python=${{ matrix.python-version }} pytest -s -vvv --cov-fail-under 100 --cov=src/ --cov=tests . --cov-report=xml
+          uv run --extra=dev pytest -s -vvv --cov-fail-under 100 --cov=src/ --cov=tests . --cov-report=xml
 
       - name: "Upload coverage to Codecov"
         uses: "codecov/codecov-action@v4"
