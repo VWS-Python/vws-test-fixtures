@@ -43,6 +43,7 @@ optional-dependencies.dev = [
     "deptry==0.20.0",
     "doc8==1.1.2",
     "doccmd==2024.10.8.12",
+    "docformatter==1.7.5",
     "freezegun==1.5.1",
     "furo==2024.8.6",
     "interrogate==1.7.0",
@@ -67,7 +68,6 @@ optional-dependencies.dev = [
     "sybil==8.0.0",
     "sybil-extras==2024.9.22.1",
     "vulture==2.13",
-    "docformatter==1.7.5",
 ]
 optional-dependencies.packaging = [
 ]
