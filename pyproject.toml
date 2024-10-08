@@ -36,7 +36,6 @@ dependencies = [
     "pillow",
     "pytest",
 ]
-
 optional-dependencies.dev = [
     "actionlint-py==1.7.3.17",
     "beartype==0.19.0",
@@ -68,6 +67,7 @@ optional-dependencies.dev = [
     "sybil==8.0.0",
     "sybil-extras==2024.9.22.1",
     "vulture==2.13",
+    "docformatter==1.7.5",
 ]
 optional-dependencies.packaging = [
 ]
