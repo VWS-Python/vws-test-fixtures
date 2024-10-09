@@ -68,6 +68,7 @@ optional-dependencies.dev = [
     "sybil==8.0.0",
     "sybil-extras==2024.9.22.1",
     "vulture==2.13",
+    "yamlfix==1.17.0",
 ]
 optional-dependencies.packaging = [
 ]
@@ -354,3 +355,7 @@ ignore_names = [
 
 # Duplicate some of .gitignore
 exclude = [ ".venv" ]
+
+[tool.yamlfix]
+section_whitelines = 1
+whitelines = 1
