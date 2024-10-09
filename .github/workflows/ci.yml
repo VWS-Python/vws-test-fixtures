@@ -1,6 +1,6 @@
 ---
 
-name: CI
+name: Test
 
 on:
   push:
@@ -27,14 +27,6 @@ jobs:
       - name: Install uv
         uses: astral-sh/setup-uv@v3
 
-      - name: "Lint"
-        run: |
-          uv run --extra=dev pre-commit run --all-files --hook-stage pre-commit --verbose
-          uv run --extra=dev pre-commit run --all-files --hook-stage pre-push --verbose
-          uv run --extra=dev pre-commit run --all-files --hook-stage manual --verbose
-        env:
-          UV_PYTHON: ${{ matrix.python-version }}
-
       - name: "Run tests"
         env:
           # See https://pytest-cov.readthedocs.io/en/latest/plugins.html for why we
@@ -55,6 +47,3 @@ jobs:
         with:
           fail_ci_if_error: true
           token: ${{ secrets.CODECOV_TOKEN }}
-
-      - uses: pre-commit-ci/lite-action@v1.0.3
-        if: always()
