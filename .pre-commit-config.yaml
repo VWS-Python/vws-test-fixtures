@@ -120,6 +120,18 @@ repos:
         entry: uv run --extra=dev doccmd --language=python --command="pyright"
         language: python
         types_or: [markdown, rst]
+        additional_dependencies: [uv==0.4.25]
+
+      - id: pyright-verifytypes
+        name: pyright-verifytypes
+        stages: [pre-push]
+        # Use `--ignoreexternal` because we expose parts of the Pytest API and Pytest is not
+        # thoroughly typed enough.
+        entry: uv run --extra=dev -m pyright --ignoreexternal --verifytypes vws_test_fixtures
+        language: python
+        pass_filenames: false
+        types_or: [python]
+        additional_dependencies: [uv==0.4.25]
 
       - id: vulture
         name: vulture
@@ -268,6 +280,7 @@ ci:
     - pyproject-fmt-fix
     - pyright
     - pyright-docs
+    - pyright-verifytypes
     - pyroma
     - ruff-check-fix
     - ruff-check-fix-docs
