@@ -125,6 +125,8 @@ repos:
       - id: pyright-verifytypes
         name: pyright-verifytypes
         stages: [pre-push]
+        # Use `--ignoreexternal` because we expose parts of the Pytest API and Pytest is not
+        # thoroughly typed enough.
         entry: uv run --extra=dev -m pyright --ignoreexternal --verifytypes vws_test_fixtures
         language: python
         pass_filenames: false
