@@ -1,4 +1,4 @@
-|Build Status| |codecov| |PyPI| |Documentation Status|
+|Build Status| |codecov| |PyPI|
 
 VWS Test Fixtures
 ==================
@@ -36,20 +36,17 @@ Example usage
 
 ``png_too_large`` is a PNG which has dimensions whcih are too large to be added to a Vuforia database.
 
-... and more, see the `full documentation <https://vws-test-fixtures.readthedocs.io/en/latest>`__ for details of all fixtures provided.
+... and more, see the `full documentation <https://vws-python.github.io/vws-test-fixtures/>`__ for details of all fixtures provided.
 
 Full Documentation
 ------------------
 
-See the `full documentation <https://vws-test-fixtures.readthedocs.io/en/latest>`__.
+See the `full documentation <https://vws-python.github.io/vws-test-fixtures/>`__.
 
 .. |Build Status| image:: https://github.com/VWS-Python/vws-test-fixtures/actions/workflows/ci.yml/badge.svg?branch=main
    :target: https://github.com/VWS-Python/vws-test-fixtures/actions
 .. |codecov| image:: https://codecov.io/gh/VWS-Python/vws-test-fixtures/branch/main/graph/badge.svg
    :target: https://codecov.io/gh/VWS-Python/vws-test-fixtures
-.. |Documentation Status| image:: https://readthedocs.org/projects/vws-test-fixtures/badge/?version=latest
-   :target: https://vws-test-fixtures.readthedocs.io/en/latest/?badge=latest
-   :alt: Documentation Status
 .. |PyPI| image:: https://badge.fury.io/py/VWS-Test-Fixtures.svg
    :target: https://badge.fury.io/py/VWS-Test-Fixtures
 .. |minimum-python-version| replace:: 3.12
