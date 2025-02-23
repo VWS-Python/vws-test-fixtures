@@ -49,4 +49,4 @@ See the `full documentation <https://vws-python.github.io/vws-test-fixtures/>`__
    :target: https://codecov.io/gh/VWS-Python/vws-test-fixtures
 .. |PyPI| image:: https://badge.fury.io/py/VWS-Test-Fixtures.svg
    :target: https://badge.fury.io/py/VWS-Test-Fixtures
-.. |minimum-python-version| replace:: 3.12
+.. |minimum-python-version| replace:: 3.13
