@@ -75,6 +75,7 @@ optional-dependencies.dev = [
 optional-dependencies.packaging = [
 ]
 optional-dependencies.release = [ "check-wheel-contents==0.6.1" ]
+urls.Documentation = "https://vws-python.github.io/vws-test-fixtures/"
 urls.Source = "https://github.com/VWS-Python/vws-test-fixtures"
 entry-points.pytest11.vws_test_fixtures = "vws_test_fixtures.plugin"
 
