@@ -3,7 +3,6 @@ build-backend = "setuptools.build_meta"
 requires = [
     "setuptools",
     "setuptools-scm>=8.1.0",
-    "wheel",
 ]
 
 [project]
@@ -43,18 +42,18 @@ optional-dependencies.dev = [
     "deptry==0.23.0",
     "doc8==1.1.2",
     "doccmd==2025.4.8",
-    "docformatter==1.7.5",
+    "docformatter==1.7.6",
     "furo==2024.8.6",
     "interrogate==1.7.0",
     "mypy[faster-cache]==1.15.0",
     "mypy-strict-kwargs==2025.4.3",
     "pre-commit==4.2.0",
-    "pylint==3.3.6",
+    "pylint==3.3.7",
     "pyproject-fmt==2.5.1",
-    "pyright==1.1.398",
+    "pyright==1.1.400",
     "pyroma==4.2",
-    "pytest-cov==6.1.0",
-    "ruff==0.11.4",
+    "pytest-cov==6.1.1",
+    "ruff==0.11.9",
     # We add shellcheck-py not only for shell scripts and shell code blocks,
     # but also because having it installed means that ``actionlint-py`` will
     # use it to lint shell commands in GitHub workflow files.
@@ -71,8 +70,6 @@ optional-dependencies.dev = [
     "sybil-extras==2025.4.7",
     "vulture==2.14",
     "yamlfix==1.17.0",
-]
-optional-dependencies.packaging = [
 ]
 optional-dependencies.release = [ "check-wheel-contents==0.6.1" ]
 urls.Documentation = "https://vws-python.github.io/vws-test-fixtures/"
