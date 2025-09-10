@@ -52,6 +52,10 @@ optional-dependencies.dev = [
     "pyproject-fmt==2.6.0",
     "pyright==1.1.405",
     "pyroma==5.0",
+    # We use an old version of ``pytest-cov`` as we need to support coverage for a pytest fixture.
+    # As per https://pytest-cov.readthedocs.io/en/latest/plugins.html this is not supported in
+    # pytest-cov 7.0.0.
+    # We could instead move to using ``coverage.py`` directly.
     "pytest-cov==6.3.0",
     "ruff==0.12.12",
     # We add shellcheck-py not only for shell scripts and shell code blocks,
