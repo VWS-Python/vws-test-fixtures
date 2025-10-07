@@ -1,4 +1,4 @@
-|Build Status| |codecov| |PyPI|
+|Build Status| |PyPI|
 
 VWS Test Fixtures
 ==================
@@ -45,8 +45,6 @@ See the `full documentation <https://vws-python.github.io/vws-test-fixtures/>`__
 
 .. |Build Status| image:: https://github.com/VWS-Python/vws-test-fixtures/actions/workflows/ci.yml/badge.svg?branch=main
    :target: https://github.com/VWS-Python/vws-test-fixtures/actions
-.. |codecov| image:: https://codecov.io/gh/VWS-Python/vws-test-fixtures/branch/main/graph/badge.svg
-   :target: https://codecov.io/gh/VWS-Python/vws-test-fixtures
 .. |PyPI| image:: https://badge.fury.io/py/VWS-Test-Fixtures.svg
    :target: https://badge.fury.io/py/VWS-Test-Fixtures
 .. |minimum-python-version| replace:: 3.13
