@@ -266,7 +266,6 @@ ignore = [
     "Makefile",
     "ci",
     "ci/**",
-    "codecov.yaml",
     "doc8.ini",
     "docs",
     "docs/**",
