@@ -55,7 +55,7 @@ optional-dependencies.dev = [
     # As per https://pytest-cov.readthedocs.io/en/latest/plugins.html this is not supported in
     # pytest-cov 7.0.0.
     # We could instead move to using ``coverage.py`` directly.
-    "pytest-cov==6.3.0",
+    "pytest-cov==7.0.0",
     "ruff==0.14.0",
     # We add shellcheck-py not only for shell scripts and shell code blocks,
     # but also because having it installed means that ``actionlint-py`` will
