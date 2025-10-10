@@ -2,10 +2,6 @@
 Fixtures for images.
 """
 
-# Coverage is weird in this file - see
-# https://pytest-cov.readthedocs.io/en/latest/plugins.html
-# for environment variables we have to set to get coverage to work.
-
 import io
 import secrets
 from pathlib import Path

@@ -32,19 +32,13 @@ jobs:
           cache-dependency-glob: '**/pyproject.toml'
 
       - name: Run tests
-        env:
-          # See https://pytest-cov.readthedocs.io/en/latest/plugins.html for why we
-          # set these variables, and use `--cov-append`.
-          #
-          # Without them, pytest plugin coverage is not counted correctly.
-          COV_CORE_CONFIG: .coveragerc
-          COV_CORE_SOURCE: src
-          COV_CORE_DATAFILE: .coverage.eager
-          UV_PYTHON: ${{ matrix.python-version }}
         run: |
           # We run tests against "." and not the tests directory as we test the README
           # and documentation.
-          uv run --extra=dev pytest -s -vvv --cov-fail-under 100 --cov=src/ --cov=tests .
+          uv run --extra=dev coverage run -m pytest -s -vvv .
+          uv run --extra=dev coverage report
+        env:
+          UV_PYTHON: ${{ matrix.python-version }}
 
   completion-ci:
     needs: build

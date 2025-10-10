@@ -38,6 +38,7 @@ optional-dependencies.dev = [
     "actionlint-py==1.7.7.23",
     "beartype==0.22.2",
     "check-manifest==0.50",
+    "coverage==7.10.7",
     "deptry==0.23.1",
     "doc8==2.0.0",
     "doccmd==2025.9.19",
@@ -51,11 +52,6 @@ optional-dependencies.dev = [
     "pyproject-fmt==2.10.0",
     "pyright==1.1.406",
     "pyroma==5.0",
-    # We use an old version of ``pytest-cov`` as we need to support coverage for a pytest fixture.
-    # As per https://pytest-cov.readthedocs.io/en/latest/plugins.html this is not supported in
-    # pytest-cov 7.0.0.
-    # We could instead move to using ``coverage.py`` directly.
-    "pytest-cov==6.3.0",
     "ruff==0.14.0",
     # We add shellcheck-py not only for shell scripts and shell code blocks,
     # but also because having it installed means that ``actionlint-py`` will
@@ -297,11 +293,13 @@ log_cli = true
 [tool.coverage.run]
 
 branch = true
+source = [ "src", "tests" ]
 
 [tool.coverage.report]
 exclude_also = [
     "if TYPE_CHECKING:",
 ]
+fail_under = 100
 
 [tool.mypy]
 
