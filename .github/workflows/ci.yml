@@ -35,8 +35,8 @@ jobs:
         run: |
           # We run tests against "." and not the tests directory as we test the README
           # and documentation.
-          uv run --extra=dev coverage run --source=src/ --source=tests/ -m pytest -s -vvv .
-          uv run --extra=dev coverage report --fail-under=100
+          uv run --extra=dev coverage run -m pytest -s -vvv .
+          uv run --extra=dev coverage report
         env:
           UV_PYTHON: ${{ matrix.python-version }}
 

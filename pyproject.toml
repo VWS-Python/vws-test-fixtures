@@ -293,11 +293,13 @@ log_cli = true
 [tool.coverage.run]
 
 branch = true
+source = [ "src", "tests" ]
 
 [tool.coverage.report]
 exclude_also = [
     "if TYPE_CHECKING:",
 ]
+fail_under = 100
 
 [tool.mypy]
 
