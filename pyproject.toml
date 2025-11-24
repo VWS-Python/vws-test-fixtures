@@ -35,7 +35,7 @@ dependencies = [
     "pytest>=8.3.3",
 ]
 optional-dependencies.dev = [
-    "actionlint-py==1.7.8.24",
+    "actionlint-py==1.7.9.24",
     "beartype==0.22.6",
     "check-manifest==0.51",
     "coverage==7.12.0",
