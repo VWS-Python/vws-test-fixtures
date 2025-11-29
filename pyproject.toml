@@ -41,7 +41,7 @@ optional-dependencies.dev = [
     "coverage==7.12.0",
     "deptry==0.24.0",
     "doc8==2.0.0",
-    "doccmd==2025.11.8.1",
+    "doccmd==2025.11.20",
     "docformatter==1.7.7",
     "furo==2025.9.25",
     "interrogate==1.7.0",
@@ -66,7 +66,7 @@ optional-dependencies.dev = [
     "sphinx-substitution-extensions==2025.11.17",
     "sphinxcontrib-spelling==8.0.2",
     "sybil==9.2.0",
-    "sybil-extras==2025.11.8",
+    "sybil-extras==2025.11.19",
     "vulture==2.14",
     "yamlfix==1.19.0",
 ]
