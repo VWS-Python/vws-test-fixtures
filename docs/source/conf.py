@@ -71,6 +71,7 @@ html_theme_options = {
 htmlhelp_basename = "VWSTESTFIXTURESdoc"
 intersphinx_mapping = {
     "python": (f"https://docs.python.org/{minimum_python_version}", None),
+    "pytest": ("https://docs.pytest.org/en/stable/", None),
 }
 nitpicky = True
 warning_is_error = True
