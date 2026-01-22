@@ -1,5 +1,4 @@
 ---
-
 name: Test
 
 on:
@@ -16,7 +15,6 @@ permissions: {}
 
 jobs:
   build:
-
     strategy:
       matrix:
         python-version: ['3.13']
@@ -36,6 +34,9 @@ jobs:
           cache-dependency-glob: '**/pyproject.toml'
 
       - name: Run tests
+        # Use bash to ensure the step fails if any command fails.
+        # PowerShell does not fail on intermediate command failures by default.
+        shell: bash
         run: |
           # We run tests against "." and not the tests directory as we test the README
           # and documentation.
