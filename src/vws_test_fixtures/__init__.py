@@ -1,3 +1,1 @@
-"""
-``pytest`` fixtures for testing Vuforia Web Services related tools.
-"""
+"""``pytest`` fixtures for testing Vuforia Web Services related tools."""

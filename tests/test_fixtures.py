@@ -1,6 +1,4 @@
-"""
-Test for the new fixtures.
-"""
+"""Test for the new fixtures."""
 
 import io
 
@@ -16,9 +14,7 @@ def test_image_fixtures(
     bad_image_file: io.BytesIO,
     different_high_quality_image: io.BytesIO,
 ) -> None:
-    """
-    The image functions can be used as fixtures.
-    """
+    """The image functions can be used as fixtures."""
     fixture_bytes_list = [
         high_quality_image.getvalue(),
         image_file_failed_state.getvalue(),

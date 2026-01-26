@@ -1,6 +1,4 @@
-"""
-Fixtures for images.
-"""
+"""Fixtures for images."""
 
 import io
 import secrets
@@ -54,7 +52,8 @@ def _make_image_file(
 
 @pytest.fixture
 def high_quality_image() -> io.BytesIO:
-    """An image file which is expected to have a 'success' status when added to
+    """An image file which is expected to have a 'success' status when
+    added to
     a target and a high tracking rating.
 
     At the time of writing, this image gains a tracking rating of 5.
@@ -66,7 +65,8 @@ def high_quality_image() -> io.BytesIO:
 @pytest.fixture
 def image_file_failed_state() -> io.BytesIO:
     """
-    An image file which is expected to be accepted by the add and update target
+    An image file which is expected to be accepted by the add and update
+    target
     endpoints, but get a "failed" status.
     """
     # This image gets a "failed" status because it is so small.
@@ -81,7 +81,8 @@ def image_file_failed_state() -> io.BytesIO:
 @pytest.fixture
 def png_too_large() -> io.BytesIO:
     """
-    Return a PNG file which has dimensions which are too large to be added to a
+    Return a PNG file which has dimensions which are too large to be
+    added to a
     Vuforia database.
     """
     width = height = 890
@@ -97,7 +98,8 @@ def png_too_large() -> io.BytesIO:
 @pytest.fixture
 def image_file_success_state_low_rating() -> io.BytesIO:
     """
-    An image file which is expected to have a 'success' status when added to a
+    An image file which is expected to have a 'success' status when
+    added to a
     target and a low rating after processing.
     """
     return _make_image_file(
@@ -110,9 +112,7 @@ def image_file_success_state_low_rating() -> io.BytesIO:
 
 @pytest.fixture
 def corrupted_image_file() -> io.BytesIO:
-    """
-    An image file which is corrupted.
-    """
+    """An image file which is corrupted."""
     original_image = _make_image_file(
         file_format="PNG",
         color_space="RGB",
@@ -127,7 +127,8 @@ def corrupted_image_file() -> io.BytesIO:
 @pytest.fixture(params=[("PNG", "RGB"), ("JPEG", "RGB"), ("PNG", "L")])
 def image_files_failed_state(request: pytest.FixtureRequest) -> io.BytesIO:
     """
-    An image file which is expected to be accepted by the add and update target
+    An image file which is expected to be accepted by the add and update
+    target
     endpoints, but get a "failed" status.
     """
     # These images get a "failed" status because they are so small.
@@ -160,7 +161,8 @@ def bad_image_file(request: pytest.FixtureRequest) -> io.BytesIO:
 
 @pytest.fixture
 def different_high_quality_image() -> io.BytesIO:
-    """An image file which is expected to have a 'success' status when added to
+    """An image file which is expected to have a 'success' status when
+    added to
     a target and a high tracking rating.
 
     This is necessarily different to ``high_quality_image``.
