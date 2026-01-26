@@ -1,3 +1,1 @@
-"""
-Tests for fixtures.
-"""
+"""Tests for fixtures."""
