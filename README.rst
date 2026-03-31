@@ -30,6 +30,15 @@ Example usage
        minimum_image_size = 1000
        assert len(image_file_bytes) >= minimum_image_size
 
+.. skip doccmd[all]: next
+
+.. invisible-code-block: python
+
+   from sybil.testing import run_pytest
+   from vws_test_fixtures.images import high_quality_image
+
+   run_pytest(test_high_quality_image, fixtures=[high_quality_image])
+
 ``high_quality_image`` returns an image file which is expected to have a 'success' status when added to a target, and a high tracking rating.
 
 ``image_file_failed_state`` is expected to be accepted by the add and update target endpoints, but get a "failed" status.
