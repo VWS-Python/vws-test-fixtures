@@ -28,6 +28,16 @@ Example usage
        minimum_image_size = 1000
        assert len(image_file_bytes) >= minimum_image_size
 
+.. skip doccmd[all]: next
+
+.. invisible-code-block: python
+
+   from sybil.testing import run_pytest
+
+   from vws_test_fixtures.images import high_quality_image
+
+   run_pytest(test_high_quality_image, fixtures=[high_quality_image])
+
 All fixtures
 ------------
 
