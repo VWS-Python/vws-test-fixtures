@@ -2,7 +2,7 @@
 
 import io
 import secrets
-from pathlib import Path
+from importlib.resources import files
 from typing import Literal
 
 import pytest
@@ -58,8 +58,8 @@ def high_quality_image() -> io.BytesIO:
 
     At the time of writing, this image gains a tracking rating of 5.
     """
-    path = Path(__file__).parent / "high_quality_image.jpg"
-    return io.BytesIO(initial_bytes=path.read_bytes())
+    resource = files(anchor=__package__) / "high_quality_image.jpg"
+    return io.BytesIO(initial_bytes=resource.read_bytes())
 
 
 @pytest.fixture
@@ -167,5 +167,5 @@ def different_high_quality_image() -> io.BytesIO:
 
     This is necessarily different to ``high_quality_image``.
     """
-    path = Path(__file__).parent / "different_high_quality_image.jpg"
-    return io.BytesIO(initial_bytes=path.read_bytes())
+    resource = files(anchor=__package__) / "different_high_quality_image.jpg"
+    return io.BytesIO(initial_bytes=resource.read_bytes())
