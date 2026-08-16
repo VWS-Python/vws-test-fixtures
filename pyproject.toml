@@ -42,7 +42,7 @@ optional-dependencies.dev = [
     "coverage==7.15.4",
     "deptry==0.25.1",
     "doc8==2.0.0",
-    "doccmd==2026.7.19",
+    "doccmd==2026.8.16",
     "furo==2025.12.19",
     "interrogate==1.7.0",
     "mypy[faster-cache]==2.3.0",
@@ -55,7 +55,7 @@ optional-dependencies.dev = [
     "pyrefly==1.2.0",
     "pyright==1.1.411",
     "pyroma==5.0.1",
-    "pytest-beartype-tests==2026.4.26",
+    "pytest-beartype-tests==2026.8.16",
     "ruff==0.16.2",
     # We add shellcheck-py not only for shell scripts and shell code blocks,
     # but also because having it installed means that ``actionlint-py`` will
