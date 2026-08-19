@@ -10,7 +10,7 @@ Changelog
 2026.08.16
 ----------
 
-No significant changes.
+No documented changes.
 
 2023.03.05
 ------------
