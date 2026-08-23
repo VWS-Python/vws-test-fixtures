@@ -124,7 +124,10 @@ def corrupted_image_file() -> io.BytesIO:
     return io.BytesIO(initial_bytes=corrupted_data)
 
 
-@pytest.fixture(params=[("PNG", "RGB"), ("JPEG", "RGB"), ("PNG", "L")])
+@pytest.fixture(
+    params=[("PNG", "RGB"), ("JPEG", "RGB"), ("PNG", "L")],
+    ids=["PNG-RGB", "JPEG-RGB", "PNG-L"],
+)
 def image_files_failed_state(request: pytest.FixtureRequest) -> io.BytesIO:
     """
     An image file which is expected to be accepted by the add and update
