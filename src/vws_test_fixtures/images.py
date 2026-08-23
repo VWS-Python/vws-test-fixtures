@@ -36,7 +36,16 @@ def _make_image_file(
             if color_space == "L":
                 grey = secrets.choice(seq=range(255))
                 image.putpixel(xy=(column_index, row_index), value=grey)
-            else:
+            elif color_space == "CMYK":
+                cyan = secrets.choice(seq=range(256))
+                magenta = secrets.choice(seq=range(256))
+                yellow = secrets.choice(seq=range(256))
+                key = secrets.choice(seq=range(256))
+                image.putpixel(
+                    xy=(column_index, row_index),
+                    value=(cyan, magenta, yellow, key),
+                )
+            else:  # RGB
                 red = secrets.choice(seq=range(255))
                 green = secrets.choice(seq=range(255))
                 blue = secrets.choice(seq=range(255))
