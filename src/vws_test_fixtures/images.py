@@ -56,7 +56,10 @@ def high_quality_image() -> io.BytesIO:
     added to
     a target and a high tracking rating.
 
-    At the time of writing, this image gains a tracking rating of 5.
+    Historically this image has received a tracking rating of 5 from
+    Vuforia. That observation is not a runtime guarantee: Vuforia's
+    rating thresholds can change, and this fixture does not contact
+    Vuforia or assert a minimum rating.
     """
     resource = files(anchor=__package__) / "high_quality_image.jpg"
     return io.BytesIO(initial_bytes=resource.read_bytes())
@@ -101,6 +104,11 @@ def image_file_success_state_low_rating() -> io.BytesIO:
     An image file which is expected to have a 'success' status when
     added to a
     target and a low rating after processing.
+
+    The image is a small random PNG. A low tracking rating is typical
+    but not guaranteed: Vuforia ratings are nondeterministic and can
+    vary across accounts, regions, and time. This fixture does not
+    contact Vuforia or assert a rating.
     """
     return _make_image_file(
         file_format="PNG",
