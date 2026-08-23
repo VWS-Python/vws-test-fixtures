@@ -5,7 +5,6 @@ These fixtures require the optional ``mock`` extra::
     pip install 'vws-test-fixtures[mock]'
 
 That extra depends on ``vws-python-mock``, which requires Python 3.14+.
-Without the extra, requesting these fixtures skips the test.
 """
 
 from __future__ import annotations
@@ -21,9 +20,16 @@ if TYPE_CHECKING:
     from mock_vws.database import CloudDatabase, VuMarkDatabase
 
 
-def _require_mock_vws() -> None:
-    """Skip the calling test when ``mock_vws`` is not installed."""
-    pytest.importorskip(modname="mock_vws")
+def _ensure_mock_vws() -> None:
+    """Raise a clear install error when ``mock_vws`` is missing."""
+    try:
+        import mock_vws  # noqa: F401
+    except ImportError as exc:
+        message = (
+            "Database fixtures need the optional 'mock' extra: "
+            "pip install 'vws-test-fixtures[mock]'"
+        )
+        raise ImportError(message) from exc
 
 
 @dataclass(frozen=True, kw_only=True)
@@ -47,7 +53,7 @@ def fixture_mock_cloud_database() -> Generator[CloudDatabase]:
     standard ``CloudDatabase`` defaults). Processing time is kept low so
     tests run quickly.
     """
-    _require_mock_vws()
+    _ensure_mock_vws()
     from mock_vws import MockVWS
     from mock_vws.database import CloudDatabase
 
@@ -62,7 +68,7 @@ def fixture_mock_vumark_database() -> Generator[VuMarkDatabase]:
     """Yield a ``VuMarkDatabase`` with one template target, served by
     ``MockVWS``.
     """
-    _require_mock_vws()
+    _ensure_mock_vws()
     from mock_vws import MockVWS
     from mock_vws.database import VuMarkDatabase
     from mock_vws.target import VuMarkTarget
@@ -84,7 +90,7 @@ def fixture_mock_model_target_credentials() -> Generator[
     these are the fixed client credentials the mock accepts for the Model
     Target Web API.
     """
-    _require_mock_vws()
+    _ensure_mock_vws()
     from mock_vws import MockVWS
 
     credentials = ModelTargetCredentials()

@@ -40,8 +40,8 @@ jobs:
         run: |
           # We run tests against "." and not the tests directory as we test the README
           # and documentation.
-          uv run --extra=dev coverage run -m pytest -s -vvv .
-          uv run --extra=dev coverage report
+          uv run --extra=dev --extra=mock coverage run -m pytest -s -vvv .
+          uv run --extra=dev --extra=mock coverage report
         env:
           UV_PYTHON: ${{ matrix.python-version }}
 

@@ -1,10 +1,9 @@
-"""Tests for mock database fixtures."""
+"""Tests for mock database fixtures.
+
+Collected only when ``mock_vws`` is installed (see root ``conftest.py``).
+"""
 
 from __future__ import annotations
-
-import pytest
-
-pytest.importorskip(modname="mock_vws")
 
 import base64
 import io

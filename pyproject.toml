@@ -78,7 +78,6 @@ optional-dependencies.dev = [
     "ty==0.0.72",
     "vale==3.13.0.0",
     "vulture==2.16",
-    "vws-python-mock>=2026.8.14; python_full_version>='3.14'",
     "yamlfix==1.19.1",
     "zizmor==1.29.0",
 ]
@@ -305,6 +304,7 @@ ignore = [
 ]
 
 [tool.deptry]
+package_module_name_map = { vws-python-mock = "mock_vws" }
 optional_dependencies_dev_groups = [
     "dev",
     "release",
@@ -341,6 +341,7 @@ ignore_names = [
     "pygments_style",
     # pytest configuration
     "pytest_collect_file",
+    "pytest_ignore_collect",
     "pytest_plugins",
     "rst_prolog",
     "source_suffix",
