@@ -169,3 +169,83 @@ def different_high_quality_image() -> io.BytesIO:
     """
     resource = files(anchor=__package__) / "different_high_quality_image.jpg"
     return io.BytesIO(initial_bytes=resource.read_bytes())
+
+
+# Vuforia Target API maximum image file size in bytes.
+_MAX_TARGET_IMAGE_BYTES = 2_359_293
+
+# Vuforia Query / Cloud Recognition API maximum image file size in bytes.
+_MAX_QUERY_IMAGE_BYTES = 2 * 1024 * 1024
+
+# Maximum number of pixels accepted by Vuforia (undocumented; from mock_vws).
+_MAX_IMAGE_PIXELS = 37_748_736
+
+
+def _jpeg_with_minimum_size(*, min_size: int) -> io.BytesIO:
+    """Return a valid JPEG whose file size is at least ``min_size`` bytes.
+
+    A minimal JPEG is inflated with COM (comment) markers so the result is
+    deterministic and cheap to build, while remaining openable by Pillow.
+    """
+    image_buffer = io.BytesIO()
+    Image.new(mode="RGB", size=(8, 8), color=(255, 0, 0)).save(
+        fp=image_buffer,
+        format="JPEG",
+    )
+    jpeg_bytes = image_buffer.getvalue()
+    parts = [jpeg_bytes[:2]]  # SOI
+    remaining = min_size - len(jpeg_bytes)
+    # COM payload length is limited by the 16-bit length field.
+    max_payload = 65_533
+    while remaining > 0:
+        payload_len = min(remaining, max_payload)
+        length = payload_len + 2
+        com_marker = (
+            b"\xff\xfe"
+            + length.to_bytes(length=2, byteorder="big")
+            + (b"\x00" * payload_len)
+        )
+        parts.append(com_marker)
+        remaining -= payload_len
+    parts.append(jpeg_bytes[2:])
+    return io.BytesIO(initial_bytes=b"".join(parts))
+
+
+@pytest.fixture
+def jpeg_too_large() -> io.BytesIO:
+    """A JPEG larger than the Cloud Recognition 2 MiB query size limit."""
+    return _jpeg_with_minimum_size(min_size=_MAX_QUERY_IMAGE_BYTES + 1)
+
+
+@pytest.fixture
+def pixel_count_too_large() -> io.BytesIO:
+    """A PNG with more pixels than Vuforia allows, but a small file size.
+
+    Uses a single-color greyscale PNG so compression keeps the file small
+    while ``width * height`` exceeds ``_MAX_IMAGE_PIXELS``.
+
+    ``6144 * 6144 == _MAX_IMAGE_PIXELS``; one extra column exceeds the limit.
+    """
+    width = 6144 + 1
+    height = 6144
+    image_buffer = io.BytesIO()
+    image = Image.new(mode="L", size=(width, height))
+    image.save(fp=image_buffer, format="PNG")
+    image_buffer.seek(0)
+    return image_buffer
+
+
+@pytest.fixture
+def png_just_under_max_size() -> io.BytesIO:
+    """A PNG just under the Target API maximum file size (positive
+    control).
+
+    With ``compress_level=0``, an 886x886 RGB PNG is a few kibibytes under
+    ``_MAX_TARGET_IMAGE_BYTES`` regardless of pixel content.
+    """
+    width = height = 886
+    image_buffer = io.BytesIO()
+    image = Image.new(mode="RGB", size=(width, height), color=(1, 2, 3))
+    image.save(fp=image_buffer, format="PNG", compress_level=0)
+    image_buffer.seek(0)
+    return image_buffer

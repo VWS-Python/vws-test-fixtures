@@ -1,0 +1,1 @@
+Add a ``png_just_under_max_size`` boundary-good Target API size fixture.
