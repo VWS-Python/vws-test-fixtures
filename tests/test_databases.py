@@ -7,15 +7,14 @@ import io
 import json
 from http import HTTPStatus
 
+import httpx
 import pytest
-
-pytest.importorskip(modname="mock_vws")
-
-import requests
 from mock_vws.database import CloudDatabase, VuMarkDatabase
 from vws_auth_tools import authorization_header, rfc_1123_date
 
 from vws_test_fixtures.databases import ModelTargetCredentials
+
+pytest.importorskip(modname="mock_vws")
 
 
 def test_mock_cloud_database(*, mock_cloud_database: CloudDatabase) -> None:
@@ -36,7 +35,7 @@ def test_mock_cloud_database(*, mock_cloud_database: CloudDatabase) -> None:
         date=date,
         request_path=request_path,
     )
-    response = requests.get(
+    response = httpx.get(
         url="https://vws.vuforia.com" + request_path,
         headers={
             "Authorization": auth,
@@ -66,7 +65,7 @@ def test_mock_model_target_credentials(
     mock_model_target_credentials: ModelTargetCredentials,
 ) -> None:
     """Model Target credentials work against the active mock."""
-    response = requests.post(
+    response = httpx.post(
         url="https://vws.vuforia.com/oauth2/token",
         auth=(
             mock_model_target_credentials.client_id,
@@ -108,14 +107,14 @@ def test_bad_image_file_rejected_by_mock(
         date=date,
         request_path=request_path,
     )
-    response = requests.post(
+    response = httpx.post(
         url="https://vws.vuforia.com" + request_path,
         headers={
             "Authorization": auth,
             "Date": date,
             "Content-Type": content_type,
         },
-        data=content,
+        content=content,
         timeout=30,
     )
     assert response.status_code == HTTPStatus.UNPROCESSABLE_ENTITY
