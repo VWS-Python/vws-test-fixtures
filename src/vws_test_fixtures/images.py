@@ -3,6 +3,7 @@
 import io
 import secrets
 from importlib.resources import files
+from pathlib import Path
 from typing import Literal
 
 import pytest
@@ -169,3 +170,32 @@ def different_high_quality_image() -> io.BytesIO:
     """
     resource = files(anchor=__package__) / "different_high_quality_image.jpg"
     return io.BytesIO(initial_bytes=resource.read_bytes())
+
+
+@pytest.fixture
+def high_quality_image_path(
+    high_quality_image: io.BytesIO,
+    tmp_path: Path,
+) -> Path:
+    """Write ``high_quality_image`` to a temporary file and return its
+    path.
+
+    Useful for CLI and other APIs that require a filesystem path.
+    """
+    image_path = tmp_path / "high_quality_image.jpg"
+    image_path.write_bytes(data=high_quality_image.getvalue())
+    return image_path
+
+
+@pytest.fixture
+def different_high_quality_image_path(
+    different_high_quality_image: io.BytesIO,
+    tmp_path: Path,
+) -> Path:
+    """Write ``different_high_quality_image`` bytes to a temporary path.
+
+    Useful for CLI and other APIs that require a filesystem path.
+    """
+    image_path = tmp_path / "different_high_quality_image.jpg"
+    image_path.write_bytes(data=different_high_quality_image.getvalue())
+    return image_path

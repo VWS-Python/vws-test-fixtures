@@ -1,6 +1,7 @@
 """Test for the new fixtures."""
 
 import io
+from pathlib import Path
 
 
 def test_image_fixtures(
@@ -26,3 +27,22 @@ def test_image_fixtures(
         different_high_quality_image.getvalue(),
     ]
     assert len(set(fixture_bytes_list)) == len(fixture_bytes_list)
+
+
+def test_image_path_fixtures(
+    *,
+    high_quality_image: io.BytesIO,
+    high_quality_image_path: Path,
+    different_high_quality_image: io.BytesIO,
+    different_high_quality_image_path: Path,
+) -> None:
+    """Path fixtures write fixture bytes to temporary files."""
+    assert high_quality_image_path.is_file()
+    assert (
+        high_quality_image_path.read_bytes() == high_quality_image.getvalue()
+    )
+    assert different_high_quality_image_path.is_file()
+    assert (
+        different_high_quality_image_path.read_bytes()
+        == different_high_quality_image.getvalue()
+    )
