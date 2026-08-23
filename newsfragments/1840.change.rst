@@ -1,0 +1,1 @@
+- Assert fixture images have the expected Pillow format, mode, and dimensions.
