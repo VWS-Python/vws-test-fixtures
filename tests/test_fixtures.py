@@ -17,7 +17,7 @@ _MAX_IMAGE_PIXELS = 37_748_736
 _MAX_METADATA_BYTES = 1024 * 1024 - 1
 
 
-def test_image_fixtures(
+def test_image_fixtures(  # pylint: disable=too-many-locals
     *,
     high_quality_image: io.BytesIO,
     image_file_failed_state: io.BytesIO,
@@ -129,9 +129,8 @@ def test_animated_gif(*, animated_gif: io.BytesIO) -> None:
     """The animated GIF fixture has more than one frame."""
     with Image.open(fp=animated_gif) as image:
         assert image.format == "GIF"
-        assert getattr(image, "is_animated", False)
-        n_frames = getattr(image, "n_frames", 1)
-        assert n_frames > 1
+        assert image.is_animated
+        assert image.n_frames > 1
 
 
 def test_webp_image(*, webp_image: io.BytesIO) -> None:
