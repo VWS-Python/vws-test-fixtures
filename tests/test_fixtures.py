@@ -2,6 +2,9 @@
 
 import io
 
+import pytest
+from PIL import Image, UnidentifiedImageError
+
 
 def test_image_fixtures(
     *,
@@ -26,3 +29,12 @@ def test_image_fixtures(
         different_high_quality_image.getvalue(),
     ]
     assert len(set(fixture_bytes_list)) == len(fixture_bytes_list)
+
+
+def test_corrupted_image_file_not_openable_by_pillow(
+    *,
+    corrupted_image_file: io.BytesIO,
+) -> None:
+    """``corrupted_image_file`` cannot be opened by Pillow."""
+    with pytest.raises(expected_exception=UnidentifiedImageError):
+        Image.open(fp=corrupted_image_file)

@@ -112,7 +112,12 @@ def image_file_success_state_low_rating() -> io.BytesIO:
 
 @pytest.fixture
 def corrupted_image_file() -> io.BytesIO:
-    """An image file which is corrupted."""
+    """An image file which is corrupted.
+
+    The file is truncated so Pillow cannot open it.  Replacing PNG chunk
+    markers (for example ``IEND``) is not reliable: Pillow may still decode
+    the remaining bytes.
+    """
     original_image = _make_image_file(
         file_format="PNG",
         color_space="RGB",
@@ -120,7 +125,9 @@ def corrupted_image_file() -> io.BytesIO:
         height=1,
     )
     original_data = original_image.getvalue()
-    corrupted_data = original_data.replace(b"IEND", b"\x00IEND")
+    # Keep only the PNG signature so the file is clearly not openable.
+    png_signature_length = 8
+    corrupted_data = original_data[:png_signature_length]
     return io.BytesIO(initial_bytes=corrupted_data)
 
 
