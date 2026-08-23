@@ -36,6 +36,15 @@ def _make_image_file(
             if color_space == "L":
                 grey = secrets.choice(seq=range(255))
                 image.putpixel(xy=(column_index, row_index), value=grey)
+            elif color_space == "CMYK":
+                cyan = secrets.choice(seq=range(255))
+                magenta = secrets.choice(seq=range(255))
+                yellow = secrets.choice(seq=range(255))
+                key = secrets.choice(seq=range(255))
+                image.putpixel(
+                    xy=(column_index, row_index),
+                    value=(cyan, magenta, yellow, key),
+                )
             else:
                 red = secrets.choice(seq=range(255))
                 green = secrets.choice(seq=range(255))
@@ -142,13 +151,17 @@ def image_files_failed_state(request: pytest.FixtureRequest) -> io.BytesIO:
 
 
 @pytest.fixture(
-    params=[("TIFF", "RGB"), ("JPEG", "CMYK")],
+    params=[("BMP", "RGB"), ("JPEG", "CMYK")],
     ids=["Not accepted format", "Not accepted color space"],
 )
 def bad_image_file(request: pytest.FixtureRequest) -> io.BytesIO:
     """
     An image file which is expected to cause a `BadImage` result when an
     attempt is made to add it to the target database.
+
+    VWS accepts PNG and JPEG in RGB or greyscale.  BMP is used for the
+    unsupported-format case because Pillow writes it reliably across
+    platforms, unlike TIFF.
     """
     file_format, color_space = request.param
     return _make_image_file(
