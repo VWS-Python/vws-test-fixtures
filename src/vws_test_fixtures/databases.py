@@ -9,6 +9,7 @@ That extra depends on ``vws-python-mock``, which requires Python 3.14+.
 
 from __future__ import annotations
 
+import importlib.util
 from dataclasses import dataclass
 from typing import TYPE_CHECKING
 
@@ -22,14 +23,13 @@ if TYPE_CHECKING:
 
 def _ensure_mock_vws() -> None:
     """Raise a clear install error when ``mock_vws`` is missing."""
-    try:
-        import mock_vws  # noqa: F401
-    except ImportError as exc:
-        message = (
-            "Database fixtures need the optional 'mock' extra: "
-            "pip install 'vws-test-fixtures[mock]'"
-        )
-        raise ImportError(message) from exc
+    if importlib.util.find_spec(name="mock_vws") is not None:
+        return
+    message = (
+        "Database fixtures need the optional 'mock' extra: "
+        "pip install 'vws-test-fixtures[mock]'"
+    )
+    raise ImportError(message)
 
 
 @dataclass(frozen=True, kw_only=True)
