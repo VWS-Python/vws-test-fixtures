@@ -2,6 +2,8 @@
 
 import io
 
+from PIL import Image
+
 
 def test_image_fixtures(
     *,
@@ -13,6 +15,9 @@ def test_image_fixtures(
     image_files_failed_state: io.BytesIO,
     bad_image_file: io.BytesIO,
     different_high_quality_image: io.BytesIO,
+    exif_oriented_jpeg: io.BytesIO,
+    animated_gif: io.BytesIO,
+    webp_image: io.BytesIO,
 ) -> None:
     """The image functions can be used as fixtures."""
     fixture_bytes_list = [
@@ -24,5 +29,31 @@ def test_image_fixtures(
         image_files_failed_state.getvalue(),
         bad_image_file.getvalue(),
         different_high_quality_image.getvalue(),
+        exif_oriented_jpeg.getvalue(),
+        animated_gif.getvalue(),
+        webp_image.getvalue(),
     ]
     assert len(set(fixture_bytes_list)) == len(fixture_bytes_list)
+
+
+def test_exif_oriented_jpeg(*, exif_oriented_jpeg: io.BytesIO) -> None:
+    """The EXIF-oriented JPEG has Orientation set to 6."""
+    orientation_tag = 0x0112
+    expected_orientation = 6
+    with Image.open(fp=exif_oriented_jpeg) as image:
+        assert image.format == "JPEG"
+        assert image.getexif()[orientation_tag] == expected_orientation
+
+
+def test_animated_gif(*, animated_gif: io.BytesIO) -> None:
+    """The animated GIF fixture has more than one frame."""
+    with Image.open(fp=animated_gif) as image:
+        assert image.format == "GIF"
+        assert getattr(image, "is_animated", False)
+        assert image.n_frames > 1
+
+
+def test_webp_image(*, webp_image: io.BytesIO) -> None:
+    """The WebP fixture is a valid WebP image."""
+    with Image.open(fp=webp_image) as image:
+        assert image.format == "WEBP"

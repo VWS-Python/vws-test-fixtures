@@ -169,3 +169,46 @@ def different_high_quality_image() -> io.BytesIO:
     """
     resource = files(anchor=__package__) / "different_high_quality_image.jpg"
     return io.BytesIO(initial_bytes=resource.read_bytes())
+
+
+@pytest.fixture
+def exif_oriented_jpeg() -> io.BytesIO:
+    """A JPEG with an EXIF Orientation tag set (Orientation=6)."""
+    image_buffer = io.BytesIO()
+    image = Image.new(mode="RGB", size=(2, 3), color=(255, 0, 0))
+    exif = Image.Exif()
+    # EXIF Orientation tag; 6 means rotated 90 degrees CW.
+    orientation_tag = 0x0112
+    rotate_90_cw = 6
+    exif[orientation_tag] = rotate_90_cw
+    image.save(fp=image_buffer, format="JPEG", exif=exif)
+    image_buffer.seek(0)
+    return image_buffer
+
+
+@pytest.fixture
+def animated_gif() -> io.BytesIO:
+    """A multi-frame animated GIF, which Vuforia rejects."""
+    image_buffer = io.BytesIO()
+    frame_one = Image.new(mode="RGB", size=(1, 1), color=(255, 0, 0))
+    frame_two = Image.new(mode="RGB", size=(1, 1), color=(0, 0, 255))
+    frame_one.save(
+        fp=image_buffer,
+        format="GIF",
+        save_all=True,
+        append_images=[frame_two],
+        duration=100,
+        loop=0,
+    )
+    image_buffer.seek(0)
+    return image_buffer
+
+
+@pytest.fixture
+def webp_image() -> io.BytesIO:
+    """A valid WebP image file."""
+    image_buffer = io.BytesIO()
+    image = Image.new(mode="RGB", size=(1, 1), color=(0, 128, 255))
+    image.save(fp=image_buffer, format="WEBP")
+    image_buffer.seek(0)
+    return image_buffer
