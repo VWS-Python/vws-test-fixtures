@@ -62,6 +62,17 @@ def high_quality_image() -> io.BytesIO:
     return io.BytesIO(initial_bytes=resource.read_bytes())
 
 
+_FAILED_STATE_IMAGE_PARAMS: tuple[
+    tuple[Literal["PNG", "JPEG"], Literal["L", "RGB"]],
+    ...,
+] = (
+    ("PNG", "RGB"),
+    ("JPEG", "RGB"),
+    ("PNG", "L"),
+    ("JPEG", "L"),
+)
+
+
 @pytest.fixture
 def image_file_failed_state() -> io.BytesIO:
     """
@@ -70,9 +81,10 @@ def image_file_failed_state() -> io.BytesIO:
     endpoints, but get a "failed" status.
     """
     # This image gets a "failed" status because it is so small.
+    file_format, color_space = _FAILED_STATE_IMAGE_PARAMS[0]
     return _make_image_file(
-        file_format="PNG",
-        color_space="RGB",
+        file_format=file_format,
+        color_space=color_space,
         width=1,
         height=1,
     )
@@ -124,7 +136,10 @@ def corrupted_image_file() -> io.BytesIO:
     return io.BytesIO(initial_bytes=corrupted_data)
 
 
-@pytest.fixture(params=[("PNG", "RGB"), ("JPEG", "RGB"), ("PNG", "L")])
+@pytest.fixture(
+    params=_FAILED_STATE_IMAGE_PARAMS,
+    ids=["PNG-RGB", "JPEG-RGB", "PNG-L", "JPEG-L"],
+)
 def image_files_failed_state(request: pytest.FixtureRequest) -> io.BytesIO:
     """
     An image file which is expected to be accepted by the add and update

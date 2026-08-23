@@ -1,0 +1,1 @@
+- Add a greyscale JPEG variant to ``image_files_failed_state``.
