@@ -54,5 +54,9 @@ def test_rgba_png(*, rgba_png: io.BytesIO) -> None:
     with Image.open(fp=rgba_png) as image:
         assert image.format == "PNG"
         assert image.mode == "RGBA"
-        assert image.getpixel(xy=(1, 1))[3] == 0
-        assert image.getpixel(xy=(0, 0))[3] == opaque_alpha
+        transparent_pixel = image.getpixel(xy=(1, 1))
+        opaque_pixel = image.getpixel(xy=(0, 0))
+        assert isinstance(transparent_pixel, tuple)
+        assert isinstance(opaque_pixel, tuple)
+        assert transparent_pixel[3] == 0
+        assert opaque_pixel[3] == opaque_alpha
