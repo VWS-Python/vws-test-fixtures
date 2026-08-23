@@ -1,0 +1,1 @@
+- Add an integration test that ``bad_image_file`` is rejected by mock VWS.

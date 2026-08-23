@@ -1,0 +1,1 @@
+- Add a VuMark database pytest fixture via the optional ``mock`` extra.

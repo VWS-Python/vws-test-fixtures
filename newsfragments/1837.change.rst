@@ -1,0 +1,1 @@
+- Document that mock database fixtures require the optional ``mock`` extra.
