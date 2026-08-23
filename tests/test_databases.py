@@ -3,23 +3,19 @@
 from __future__ import annotations
 
 import base64
+import io
 import json
 from http import HTTPStatus
-from typing import TYPE_CHECKING
 
 import pytest
 
 pytest.importorskip(modname="mock_vws")
 
 import requests
+from mock_vws.database import CloudDatabase, VuMarkDatabase
 from vws_auth_tools import authorization_header, rfc_1123_date
 
-if TYPE_CHECKING:
-    import io
-
-    from mock_vws.database import CloudDatabase, VuMarkDatabase
-
-    from vws_test_fixtures.databases import ModelTargetCredentials
+from vws_test_fixtures.databases import ModelTargetCredentials
 
 
 def test_mock_cloud_database(*, mock_cloud_database: CloudDatabase) -> None:

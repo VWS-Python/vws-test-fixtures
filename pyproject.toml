@@ -150,6 +150,14 @@ lint.per-file-ignores."tests/test_*.py" = [
     # Allow 'assert' as we use it for tests.
     "S101",
 ]
+lint.per-file-ignores."tests/test_databases.py" = [
+    # Allow 'assert' as we use it for tests.
+    "S101",
+    # Beartype needs these imports at runtime for fixture annotations.
+    "TC001",
+    "TC002",
+    "TC003",
+]
 # Do not automatically remove commented out code.
 # We comment out code during development, and with VSCode auto-save, this code
 # is sometimes annoyingly removed.
