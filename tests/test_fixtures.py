@@ -2,8 +2,6 @@
 
 import io
 
-from vws_test_fixtures.images import _bytes_io, _load_resource_bytes
-
 
 def test_image_fixtures(
     *,
@@ -30,12 +28,15 @@ def test_image_fixtures(
     assert len(set(fixture_bytes_list)) == len(fixture_bytes_list)
 
 
-def test_bytes_io_handles_are_independent() -> None:
-    """Fresh ``BytesIO`` handles share bytes but not read position."""
-    data = _load_resource_bytes(name="high_quality_image.jpg")
-    first = _bytes_io(data=data)
-    second = _bytes_io(data=data)
-    assert first.read() == data
-    assert first.tell() == len(data)
-    assert second.tell() == 0
-    assert second.read() == data
+def test_image_fixture_buffer_starts_at_beginning(
+    *,
+    high_quality_image: io.BytesIO,
+) -> None:
+    """Fixture buffers are readable from position ``0``; ``getvalue`` still
+    works.
+    """
+    assert high_quality_image.tell() == 0
+    contents = high_quality_image.read()
+    assert contents
+    assert high_quality_image.tell() == len(contents)
+    assert high_quality_image.getvalue() == contents
