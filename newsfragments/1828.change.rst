@@ -1,0 +1,1 @@
+Add an ``empty_file`` fixture returning a zero-byte ``BytesIO``.

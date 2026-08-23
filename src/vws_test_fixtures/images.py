@@ -169,3 +169,31 @@ def different_high_quality_image() -> io.BytesIO:
     """
     resource = files(anchor=__package__) / "different_high_quality_image.jpg"
     return io.BytesIO(initial_bytes=resource.read_bytes())
+
+
+@pytest.fixture
+def empty_file() -> io.BytesIO:
+    """An empty (zero-byte) file."""
+    return io.BytesIO()
+
+
+@pytest.fixture
+def grayscale_jpeg() -> io.BytesIO:
+    """A valid greyscale (mode ``L``) JPEG image file."""
+    return _make_image_file(
+        file_format="JPEG",
+        color_space="L",
+        width=1,
+        height=1,
+    )
+
+
+@pytest.fixture
+def rgba_png() -> io.BytesIO:
+    """A PNG image in RGBA mode with some transparent pixels."""
+    image_buffer = io.BytesIO()
+    image = Image.new(mode="RGBA", size=(2, 2), color=(255, 0, 0, 0))
+    image.putpixel(xy=(0, 0), value=(0, 255, 0, 255))
+    image.save(fp=image_buffer, format="PNG")
+    image_buffer.seek(0)
+    return image_buffer
