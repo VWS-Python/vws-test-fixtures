@@ -1,0 +1,1 @@
+- Assert the two high-quality image fixtures differ as pixel arrays, not only as bytes.

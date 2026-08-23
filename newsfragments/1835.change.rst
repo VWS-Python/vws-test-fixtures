@@ -1,0 +1,1 @@
+- Cache expensive generated image bytes so they are not rebuilt every test.

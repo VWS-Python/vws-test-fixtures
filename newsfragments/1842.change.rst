@@ -1,0 +1,1 @@
+- Add a test that ``corrupted_image_file`` raises when opened with Pillow.

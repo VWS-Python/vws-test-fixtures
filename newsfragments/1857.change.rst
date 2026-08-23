@@ -1,0 +1,1 @@
+- Add ``Path`` fixtures that write high-quality images to temporary files.

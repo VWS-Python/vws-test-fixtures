@@ -1,0 +1,1 @@
+- Document that bundled high-quality JPEGs are not re-scored against live Vuforia in CI.

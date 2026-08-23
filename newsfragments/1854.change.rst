@@ -1,0 +1,1 @@
+- Document typed fixture exports. The package already includes ``py.typed``.

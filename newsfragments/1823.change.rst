@@ -1,0 +1,1 @@
+- Truncate ``corrupted_image_file`` so Pillow cannot open or repair it.

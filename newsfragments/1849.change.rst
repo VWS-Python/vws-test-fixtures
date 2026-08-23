@@ -1,0 +1,1 @@
+Add an ``exif_oriented_jpeg`` fixture with EXIF Orientation set.

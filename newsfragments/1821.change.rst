@@ -1,0 +1,1 @@
+Add a ``jpeg_too_large`` fixture exceeding the Cloud Recognition 2 MiB limit.
