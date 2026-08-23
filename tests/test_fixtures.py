@@ -1,6 +1,9 @@
 """Test for the new fixtures."""
 
+import base64
 import io
+
+_MAX_METADATA_BYTES = 1024 * 1024 - 1
 
 
 def test_image_fixtures(
@@ -26,3 +29,14 @@ def test_image_fixtures(
         different_high_quality_image.getvalue(),
     ]
     assert len(set(fixture_bytes_list)) == len(fixture_bytes_list)
+
+
+def test_application_metadata_near_size_limit(
+    *,
+    application_metadata_near_size_limit: str,
+) -> None:
+    """Metadata decodes to the maximum allowed number of bytes."""
+    decoded = base64.b64decode(
+        s=application_metadata_near_size_limit.encode(encoding="ascii"),
+    )
+    assert len(decoded) == _MAX_METADATA_BYTES

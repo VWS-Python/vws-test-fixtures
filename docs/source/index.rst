@@ -47,6 +47,10 @@ Use the names of the following methods as fixture names.
    :undoc-members:
    :members:
 
+.. automodule:: vws_test_fixtures.metadata
+   :undoc-members:
+   :members:
+
 Reference
 ---------
 
