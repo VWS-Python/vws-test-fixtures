@@ -12,6 +12,13 @@ Installation
 
    pip install vws-test-fixtures
 
+For mock Vuforia database fixtures (``MockVWS``), install the optional
+``mock`` extra (Python 3.14+):
+
+.. code-block:: shell
+
+   pip install 'vws-test-fixtures[mock]'
+
 This is tested on Python |minimum-python-version|\+.
 
 Example usage

@@ -1,0 +1,1 @@
+- Add optional ``mock`` extra with ``MockVWS`` cloud, VuMark, and Model Target fixtures.
