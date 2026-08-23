@@ -1,1 +1,0 @@
-Add an ``rgba_png`` fixture returning an RGBA PNG with transparency.

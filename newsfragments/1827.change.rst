@@ -1,1 +1,0 @@
-- Share failed-state image params between the single and parametrized fixtures.

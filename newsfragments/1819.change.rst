@@ -1,1 +1,0 @@
-Include pixel value ``255`` when filling random image fixtures

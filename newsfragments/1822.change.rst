@@ -1,1 +1,0 @@
-Add a ``pixel_count_too_large`` fixture exceeding Vuforia's pixel limit.

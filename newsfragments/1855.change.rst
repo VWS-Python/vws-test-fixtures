@@ -1,1 +1,0 @@
-- Cache packaged JPEG resource bytes instead of reloading on every fixture call.

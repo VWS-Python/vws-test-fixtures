@@ -1,1 +1,0 @@
-Pass PNG and JPEG optimization flags when saving generated image fixtures

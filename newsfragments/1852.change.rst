@@ -1,1 +1,0 @@
-Branch ``_make_image_file`` pixel filling on ``color_space`` so CMYK and RGB paths are distinct

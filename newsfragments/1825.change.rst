@@ -1,1 +1,0 @@
-- Use BMP instead of TIFF for the unsupported ``bad_image_file`` format.

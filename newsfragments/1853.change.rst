@@ -1,1 +1,0 @@
-- Re-export image fixtures from the package root with an explicit ``__all__``.

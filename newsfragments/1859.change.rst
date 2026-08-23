@@ -1,1 +1,0 @@
-Add ``ClearNamespaceParser`` to the root Sybil ``conftest`` setup.

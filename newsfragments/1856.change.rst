@@ -1,1 +1,0 @@
-- Document that ``image_file_success_state_low_rating`` does not guarantee a low Vuforia rating.

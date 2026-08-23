@@ -1,1 +1,0 @@
-Add an ``animated_gif`` multi-frame GIF fixture.

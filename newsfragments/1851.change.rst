@@ -1,1 +1,0 @@
-Add a ``webp_image`` fixture returning a valid WebP image.

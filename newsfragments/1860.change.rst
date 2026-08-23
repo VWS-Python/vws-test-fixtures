@@ -1,1 +1,0 @@
-Add ``application_metadata_near_size_limit`` base64 metadata fixture.

@@ -1,1 +1,0 @@
-- Clarify that ``high_quality_image``'s historical rating of 5 is observational, not guaranteed.
