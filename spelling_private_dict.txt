@@ -10,6 +10,7 @@ auth
 beartype
 changelog
 cli
+docstring
 filesystem
 greyscale
 kibibytes
@@ -22,6 +23,7 @@ multipart
 noqa
 openable
 oversized
+parametrized
 params
 plugin
 png
