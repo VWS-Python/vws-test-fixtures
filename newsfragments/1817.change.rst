@@ -1,0 +1,1 @@
+Fix the ``_make_image_file`` docstring to document ``height`` as height, not width
