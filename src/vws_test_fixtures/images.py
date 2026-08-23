@@ -57,6 +57,9 @@ def high_quality_image() -> io.BytesIO:
     a target and a high tracking rating.
 
     At the time of writing, this image gains a tracking rating of 5.
+    That rating is not checked in this package's CI: Vuforia's scoring
+    can change. Re-check against a real database when bumping the
+    bundled JPEG.
     """
     resource = files(anchor=__package__) / "high_quality_image.jpg"
     return io.BytesIO(initial_bytes=resource.read_bytes())
@@ -166,6 +169,8 @@ def different_high_quality_image() -> io.BytesIO:
     a target and a high tracking rating.
 
     This is necessarily different to ``high_quality_image``.
+    Like ``high_quality_image``, the tracking rating is not verified in
+    CI against live Vuforia thresholds.
     """
     resource = files(anchor=__package__) / "different_high_quality_image.jpg"
     return io.BytesIO(initial_bytes=resource.read_bytes())
