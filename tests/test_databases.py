@@ -2,19 +2,20 @@
 
 from __future__ import annotations
 
+import pytest
+
+pytest.importorskip(modname="mock_vws")
+
 import base64
 import io
 import json
 from http import HTTPStatus
 
 import httpx
-import pytest
 from mock_vws.database import CloudDatabase, VuMarkDatabase
 from vws_auth_tools import authorization_header, rfc_1123_date
 
 from vws_test_fixtures.databases import ModelTargetCredentials
-
-pytest.importorskip(modname="mock_vws")
 
 
 def test_mock_cloud_database(*, mock_cloud_database: CloudDatabase) -> None:
