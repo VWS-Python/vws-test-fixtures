@@ -6,6 +6,7 @@ from pathlib import Path
 
 import pytest
 from PIL import Image, UnidentifiedImageError
+from PIL.GifImagePlugin import GifImageFile
 
 import vws_test_fixtures
 from vws_test_fixtures.images import VWS_MAX_IMAGE_FILE_SIZE
@@ -129,10 +130,9 @@ def test_animated_gif(*, animated_gif: io.BytesIO) -> None:
     """The animated GIF fixture has more than one frame."""
     with Image.open(fp=animated_gif) as image:
         assert image.format == "GIF"
-        # Pillow GIF attributes are not on the ImageFile stub.
-        assert getattr(image, "is_animated", False)  # pylint: disable=bad-builtin
-        n_frames = getattr(image, "n_frames", 1)  # pylint: disable=bad-builtin
-        assert n_frames > 1
+        assert isinstance(image, GifImageFile)
+        assert image.is_animated
+        assert image.n_frames > 1
 
 
 def test_webp_image(*, webp_image: io.BytesIO) -> None:
