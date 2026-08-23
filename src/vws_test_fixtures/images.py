@@ -45,7 +45,17 @@ def _make_image_file(
                     value=(red, green, blue),
                 )
 
-    image.save(fp=image_buffer, format=file_format)
+    if file_format == "PNG":
+        image.save(fp=image_buffer, format=file_format, optimize=True)
+    elif file_format == "JPEG":
+        image.save(
+            fp=image_buffer,
+            format=file_format,
+            quality=95,
+            optimize=True,
+        )
+    else:
+        image.save(fp=image_buffer, format=file_format)
     image_buffer.seek(0)
     return image_buffer
 
