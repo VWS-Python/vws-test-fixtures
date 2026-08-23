@@ -50,7 +50,8 @@ def test_animated_gif(*, animated_gif: io.BytesIO) -> None:
     with Image.open(fp=animated_gif) as image:
         assert image.format == "GIF"
         assert getattr(image, "is_animated", False)
-        assert image.n_frames > 1
+        n_frames = getattr(image, "n_frames", 1)
+        assert n_frames > 1
 
 
 def test_webp_image(*, webp_image: io.BytesIO) -> None:
