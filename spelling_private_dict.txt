@@ -1,3 +1,8 @@
+BMP
+MiB
+SOI
+Vuforia's
+WebP
 admin
 api
 args
@@ -5,6 +10,10 @@ auth
 beartype
 changelog
 cli
+docstring
+filesystem
+greyscale
+kibibytes
 linter
 linting
 login
@@ -12,6 +21,10 @@ macOS
 metadata
 multipart
 noqa
+openable
+oversized
+parametrized
+params
 plugin
 png
 pragma

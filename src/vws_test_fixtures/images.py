@@ -294,7 +294,7 @@ def different_high_quality_image() -> io.BytesIO:
 
 
 @pytest.fixture
-def high_quality_image_path(
+def high_quality_image_path(  # pylint: disable=redefined-outer-name
     high_quality_image: io.BytesIO,
     tmp_path: Path,
 ) -> Path:
@@ -309,7 +309,7 @@ def high_quality_image_path(
 
 
 @pytest.fixture
-def different_high_quality_image_path(
+def different_high_quality_image_path(  # pylint: disable=redefined-outer-name
     different_high_quality_image: io.BytesIO,
     tmp_path: Path,
 ) -> Path:
