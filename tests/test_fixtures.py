@@ -2,6 +2,8 @@
 
 import io
 
+import vws_test_fixtures
+
 
 def test_image_fixtures(
     *,
@@ -26,3 +28,9 @@ def test_image_fixtures(
         different_high_quality_image.getvalue(),
     ]
     assert len(set(fixture_bytes_list)) == len(fixture_bytes_list)
+
+
+def test_package_reexports_image_fixtures() -> None:
+    """Image fixtures are importable from the package root."""
+    assert vws_test_fixtures.high_quality_image is not None
+    assert "high_quality_image" in vws_test_fixtures.__all__
