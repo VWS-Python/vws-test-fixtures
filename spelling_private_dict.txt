@@ -22,6 +22,7 @@ multipart
 noqa
 openable
 oversized
+params
 plugin
 png
 pragma
