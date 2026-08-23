@@ -34,12 +34,12 @@ def _make_image_file(
     for row_index in range(height):
         for column_index in range(width):
             if color_space == "L":
-                grey = secrets.choice(seq=range(255))
+                grey = secrets.choice(seq=range(256))
                 image.putpixel(xy=(column_index, row_index), value=grey)
             else:
-                red = secrets.choice(seq=range(255))
-                green = secrets.choice(seq=range(255))
-                blue = secrets.choice(seq=range(255))
+                red = secrets.choice(seq=range(256))
+                green = secrets.choice(seq=range(256))
+                blue = secrets.choice(seq=range(256))
                 image.putpixel(
                     xy=(column_index, row_index),
                     value=(red, green, blue),
