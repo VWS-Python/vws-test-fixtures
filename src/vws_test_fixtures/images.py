@@ -2,11 +2,28 @@
 
 import io
 import secrets
+from functools import cache
 from importlib.resources import files
 from typing import Literal
 
 import pytest
 from PIL import Image
+
+
+def _bytes_io(data: bytes) -> io.BytesIO:
+    """Return a fresh ``BytesIO`` wrapping ``data``.
+
+    Each call returns an independent buffer at position ``0``, so consumers
+    that ``read()`` without seeking do not affect later fixture uses.
+    """
+    return io.BytesIO(initial_bytes=data)
+
+
+@cache
+def _load_resource_bytes(name: str) -> bytes:
+    """Load packaged image resource bytes once per process."""
+    resource = files(anchor=__package__) / name
+    return resource.read_bytes()
 
 
 def _make_image_file(
@@ -46,8 +63,19 @@ def _make_image_file(
                 )
 
     image.save(fp=image_buffer, format=file_format)
-    image_buffer.seek(0)
-    return image_buffer
+    return _bytes_io(data=image_buffer.getvalue())
+
+
+@cache
+def _png_too_large_bytes() -> bytes:
+    """Generate the oversized PNG once per process."""
+    width = height = 890
+    return _make_image_file(
+        file_format="PNG",
+        color_space="RGB",
+        width=width,
+        height=height,
+    ).getvalue()
 
 
 @pytest.fixture
@@ -58,8 +86,9 @@ def high_quality_image() -> io.BytesIO:
 
     At the time of writing, this image gains a tracking rating of 5.
     """
-    resource = files(anchor=__package__) / "high_quality_image.jpg"
-    return io.BytesIO(initial_bytes=resource.read_bytes())
+    return _bytes_io(
+        data=_load_resource_bytes(name="high_quality_image.jpg"),
+    )
 
 
 @pytest.fixture
@@ -85,14 +114,7 @@ def png_too_large() -> io.BytesIO:
     added to a
     Vuforia database.
     """
-    width = height = 890
-
-    return _make_image_file(
-        file_format="PNG",
-        color_space="RGB",
-        width=width,
-        height=height,
-    )
+    return _bytes_io(data=_png_too_large_bytes())
 
 
 @pytest.fixture
@@ -121,7 +143,7 @@ def corrupted_image_file() -> io.BytesIO:
     )
     original_data = original_image.getvalue()
     corrupted_data = original_data.replace(b"IEND", b"\x00IEND")
-    return io.BytesIO(initial_bytes=corrupted_data)
+    return _bytes_io(data=corrupted_data)
 
 
 @pytest.fixture(params=[("PNG", "RGB"), ("JPEG", "RGB"), ("PNG", "L")])
@@ -167,5 +189,6 @@ def different_high_quality_image() -> io.BytesIO:
 
     This is necessarily different to ``high_quality_image``.
     """
-    resource = files(anchor=__package__) / "different_high_quality_image.jpg"
-    return io.BytesIO(initial_bytes=resource.read_bytes())
+    return _bytes_io(
+        data=_load_resource_bytes(name="different_high_quality_image.jpg"),
+    )
