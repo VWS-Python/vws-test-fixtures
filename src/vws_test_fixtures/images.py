@@ -24,7 +24,7 @@ def _make_image_file(
             http://pillow.readthedocs.io/en/3.1.x/handbook/image-file-formats.html
         color_space: One of "L", "RGB", or "CMYK".
         width: The width, in pixels of the image.
-        height: The width, in pixels of the image.
+        height: The height, in pixels of the image.
 
     Returns:
         An image file in the given format and color space.
