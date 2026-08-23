@@ -1,12 +1,21 @@
 """Fixtures for images."""
 
 import io
-import secrets
+import random
 from importlib.resources import files
 from typing import Literal
 
 import pytest
 from PIL import Image
+
+_COLOR_SPACE_BANDS = {
+    "L": 1,
+    "RGB": 3,
+    "CMYK": 4,
+}
+
+# Vuforia Web Services rejects images larger than 2_359_293 bytes.
+VWS_MAX_IMAGE_FILE_SIZE = 2_359_293
 
 
 def _make_image_file(
@@ -14,10 +23,12 @@ def _make_image_file(
     color_space: Literal["L", "RGB", "CMYK"],
     width: int,
     height: int,
+    *,
+    seed: int,
 ) -> io.BytesIO:
     """An image file in the given format and color space.
 
-    The image file is filled with randomly colored pixels.
+    The image file is filled with deterministic pseudo-random pixels.
 
     Args:
         file_format: See
@@ -25,26 +36,21 @@ def _make_image_file(
         color_space: One of "L", "RGB", or "CMYK".
         width: The width, in pixels of the image.
         height: The width, in pixels of the image.
+        seed: Seed for pixel data so fixture bytes are reproducible.
 
     Returns:
         An image file in the given format and color space.
     """
+    bands = _COLOR_SPACE_BANDS[color_space]
+    # Deterministic fixture data, not cryptography.
+    rng = random.Random(x=seed)  # noqa: S311
+    pixel_data = rng.randbytes(n=width * height * bands)
+    image = Image.frombytes(
+        mode=color_space,
+        size=(width, height),
+        data=pixel_data,
+    )
     image_buffer = io.BytesIO()
-    image = Image.new(mode=color_space, size=(width, height))
-    for row_index in range(height):
-        for column_index in range(width):
-            if color_space == "L":
-                grey = secrets.choice(seq=range(255))
-                image.putpixel(xy=(column_index, row_index), value=grey)
-            else:
-                red = secrets.choice(seq=range(255))
-                green = secrets.choice(seq=range(255))
-                blue = secrets.choice(seq=range(255))
-                image.putpixel(
-                    xy=(column_index, row_index),
-                    value=(red, green, blue),
-                )
-
     image.save(fp=image_buffer, format=file_format)
     image_buffer.seek(0)
     return image_buffer
@@ -75,6 +81,7 @@ def image_file_failed_state() -> io.BytesIO:
         color_space="RGB",
         width=1,
         height=1,
+        seed=0,
     )
 
 
@@ -85,13 +92,16 @@ def png_too_large() -> io.BytesIO:
     added to a
     Vuforia database.
     """
-    width = height = 890
+    # Vuforia Web Services rejects images larger than 2_359_293 bytes.
+    # 900x900 RGB noise reliably exceeds ``VWS_MAX_IMAGE_FILE_SIZE``.
+    width = height = 900
 
     return _make_image_file(
         file_format="PNG",
         color_space="RGB",
         width=width,
         height=height,
+        seed=0,
     )
 
 
@@ -107,6 +117,7 @@ def image_file_success_state_low_rating() -> io.BytesIO:
         color_space="RGB",
         width=5,
         height=5,
+        seed=0,
     )
 
 
@@ -118,6 +129,7 @@ def corrupted_image_file() -> io.BytesIO:
         color_space="RGB",
         width=1,
         height=1,
+        seed=1,
     )
     original_data = original_image.getvalue()
     corrupted_data = original_data.replace(b"IEND", b"\x00IEND")
@@ -138,6 +150,7 @@ def image_files_failed_state(request: pytest.FixtureRequest) -> io.BytesIO:
         color_space=color_space,
         width=1,
         height=1,
+        seed=2,
     )
 
 
@@ -156,6 +169,7 @@ def bad_image_file(request: pytest.FixtureRequest) -> io.BytesIO:
         color_space=color_space,
         width=1,
         height=1,
+        seed=3,
     )
 
 

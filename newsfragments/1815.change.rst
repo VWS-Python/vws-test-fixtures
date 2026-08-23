@@ -1,0 +1,1 @@
+Fill image fixtures with fast, deterministic pixel data and ensure ``png_too_large`` exceeds the VWS size limit

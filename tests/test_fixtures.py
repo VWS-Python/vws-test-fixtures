@@ -2,6 +2,8 @@
 
 import io
 
+from vws_test_fixtures.images import VWS_MAX_IMAGE_FILE_SIZE
+
 
 def test_image_fixtures(
     *,
@@ -26,3 +28,10 @@ def test_image_fixtures(
         different_high_quality_image.getvalue(),
     ]
     assert len(set(fixture_bytes_list)) == len(fixture_bytes_list)
+
+
+def test_png_too_large_exceeds_vws_file_size_limit(
+    png_too_large: io.BytesIO,
+) -> None:
+    """``png_too_large`` exceeds the VWS image file size limit."""
+    assert len(png_too_large.getvalue()) > VWS_MAX_IMAGE_FILE_SIZE
