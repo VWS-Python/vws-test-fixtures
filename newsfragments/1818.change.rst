@@ -1,0 +1,1 @@
+Fill CMYK image fixtures with CMYK 4-tuples instead of RGB triplets
