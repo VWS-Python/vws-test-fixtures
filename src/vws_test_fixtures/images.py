@@ -216,9 +216,14 @@ def image_file_success_state_low_rating() -> io.BytesIO:
 def corrupted_image_file() -> io.BytesIO:
     """An image file which is corrupted.
 
-    The file is truncated so Pillow cannot open it.  Replacing PNG chunk
-    markers (for example ``IEND``) is not reliable: Pillow may still decode
-    the remaining bytes.
+    The file keeps the PNG signature and the header chunk, and drops every
+    chunk after them, so Pillow cannot open it.
+
+    Keeping the signature alone is not suitable.  Vuforia Web Services
+    answers such a file with a ``500`` response and a ``Fail`` result code,
+    where it answers every other malformed image with ``BadImage``.
+    Replacing chunk markers (for example ``IEND``) is not reliable either:
+    Pillow may still decode the remaining bytes.
     """
     original_image = _make_image_file(
         file_format="PNG",
@@ -228,9 +233,12 @@ def corrupted_image_file() -> io.BytesIO:
         seed=1,
     )
     original_data = original_image.getvalue()
-    # Keep only the PNG signature so the file is clearly not openable.
     png_signature_length = 8
-    corrupted_data = original_data[:png_signature_length]
+    # The header chunk is a 4 byte length, a 4 byte type, 13 bytes of data,
+    # and a 4 byte checksum.
+    png_header_chunk_length = 25
+    header_length = png_signature_length + png_header_chunk_length
+    corrupted_data = original_data[:header_length]
     return _bytes_io(data=corrupted_data)
 
 

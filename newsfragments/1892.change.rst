@@ -1,0 +1,1 @@
+Keep the PNG header chunk in ``corrupted_image_file``, so that Vuforia Web Services answers it with ``BadImage`` rather than a ``500`` response.
