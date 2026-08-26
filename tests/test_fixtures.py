@@ -16,6 +16,7 @@ _PNG_TOO_LARGE_DIMENSION = 900
 _MAX_QUERY_IMAGE_BYTES = 2 * 1024 * 1024
 _MAX_IMAGE_PIXELS = 37_748_736
 _MAX_METADATA_BYTES = 1024 * 1024 - 1
+_PNG_SIGNATURE = b"\x89PNG\r\n\x1a\n"
 
 
 def test_image_fixtures(  # pylint: disable=too-many-locals
@@ -75,6 +76,22 @@ def test_corrupted_image_file_not_openable_by_pillow(
     """``corrupted_image_file`` cannot be opened by Pillow."""
     with pytest.raises(expected_exception=UnidentifiedImageError):
         Image.open(fp=corrupted_image_file)
+
+
+def test_corrupted_image_file_keeps_png_header(
+    *,
+    corrupted_image_file: io.BytesIO,
+) -> None:
+    """``corrupted_image_file`` keeps the PNG signature and header chunk.
+
+    Vuforia Web Services answers a file truncated to the signature alone
+    with a ``500`` response and a ``Fail`` result code, rather than the
+    ``BadImage`` it gives every other malformed image.
+    """
+    data = corrupted_image_file.getvalue()
+    assert data.startswith(_PNG_SIGNATURE)
+    assert len(data) > len(_PNG_SIGNATURE)
+    assert b"IHDR" in data
 
 
 def test_image_fixture_buffer_starts_at_beginning(
