@@ -7,6 +7,11 @@ Changelog
 
 .. towncrier release notes start
 
+2026.08.26
+----------
+
+- Keep the PNG header chunk in ``corrupted_image_file``, so that Vuforia Web Services answers it with ``BadImage`` rather than a ``500`` response.
+
 2026.08.23
 ----------
 
