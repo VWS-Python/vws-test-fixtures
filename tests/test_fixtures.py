@@ -75,7 +75,7 @@ def test_corrupted_image_file_not_openable_by_pillow(
 ) -> None:
     """``corrupted_image_file`` cannot be opened by Pillow."""
     with pytest.raises(expected_exception=UnidentifiedImageError):
-        Image.open(fp=corrupted_image_file)
+        _ = Image.open(fp=corrupted_image_file)
 
 
 def test_corrupted_image_file_keeps_png_header(
@@ -103,7 +103,7 @@ def test_image_fixture_buffer_starts_at_beginning(
     """
     assert high_quality_image.tell() == 0
     contents = high_quality_image.read()
-    assert contents
+    assert len(contents) > 0
     assert high_quality_image.tell() == len(contents)
     assert high_quality_image.getvalue() == contents
 
