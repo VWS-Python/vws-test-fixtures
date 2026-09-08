@@ -35,7 +35,12 @@ dependencies = [
     "pillow>=10.4.0",
     "pytest>=8.3.3",
 ]
-optional-dependencies.dev = [
+urls.Documentation = "https://vws-python.github.io/vws-test-fixtures/"
+urls.Source = "https://github.com/VWS-Python/vws-test-fixtures"
+entry-points.pytest11.vws_test_fixtures = "vws_test_fixtures.plugin"
+
+[dependency-groups]
+dev = [
     "actionlint-py==1.7.12.24",
     "beartype==0.22.9",
     "check-manifest==0.51",
@@ -81,13 +86,7 @@ optional-dependencies.dev = [
     "yamlfix==1.19.1",
     "zizmor==1.30.0",
 ]
-optional-dependencies.release = [ "check-wheel-contents==0.6.3", "towncrier==26.9.0" ]
-urls.Documentation = "https://vws-python.github.io/vws-test-fixtures/"
-urls.Source = "https://github.com/VWS-Python/vws-test-fixtures"
-entry-points.pytest11.vws_test_fixtures = "vws_test_fixtures.plugin"
-
-[dependency-groups]
-dev = []
+release = [ "check-wheel-contents==0.6.3", "towncrier==26.9.0" ]
 
 [tool.setuptools]
 packages.find.where = [
@@ -283,12 +282,6 @@ ignore = [
     "tests/**",
     "vuforia_secrets.env.example",
     "zizmor.yml",
-]
-
-[tool.deptry]
-optional_dependencies_dev_groups = [
-    "dev",
-    "release",
 ]
 
 [tool.vulture]
