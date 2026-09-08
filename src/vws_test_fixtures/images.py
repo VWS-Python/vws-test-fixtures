@@ -312,7 +312,7 @@ def high_quality_image_path(  # pylint: disable=redefined-outer-name
     Useful for CLI and other APIs that require a filesystem path.
     """
     image_path = tmp_path / "high_quality_image.jpg"
-    image_path.write_bytes(data=high_quality_image.getvalue())
+    _ = image_path.write_bytes(data=high_quality_image.getvalue())
     return image_path
 
 
@@ -326,7 +326,7 @@ def different_high_quality_image_path(  # pylint: disable=redefined-outer-name
     Useful for CLI and other APIs that require a filesystem path.
     """
     image_path = tmp_path / "different_high_quality_image.jpg"
-    image_path.write_bytes(data=different_high_quality_image.getvalue())
+    _ = image_path.write_bytes(data=different_high_quality_image.getvalue())
     return image_path
 
 
