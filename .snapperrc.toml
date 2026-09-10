@@ -1,6 +1,5 @@
-# These files contain markup constructs that Snapper main does not yet preserve.
+# https://github.com/TurtleTech-ehf/snapper/issues/125
+# This file contains a nested-list continuation that Snapper does not yet preserve.
 ignore = [
   "CHANGELOG.rst",
-  "README.rst",
-  "docs/source/index.rst",
 ]
