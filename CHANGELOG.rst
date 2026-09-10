@@ -73,8 +73,7 @@ Changelog
 
 - - Re-export image fixtures from the package root with an explicit ``__all__``.
 
-- - Document typed fixture exports.
-    The package already includes ``py.typed``.
+- - Document typed fixture exports alongside the existing ``py.typed`` marker.
 
 - - Cache packaged JPEG resource bytes instead of reloading on every fixture call.
 
