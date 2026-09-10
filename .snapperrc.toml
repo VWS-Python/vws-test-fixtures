@@ -1,5 +1,0 @@
-# https://github.com/TurtleTech-ehf/snapper/issues/125
-# This file contains a nested-list continuation that Snapper does not yet preserve.
-ignore = [
-  "CHANGELOG.rst",
-]
