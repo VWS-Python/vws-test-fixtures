@@ -302,31 +302,29 @@ def different_high_quality_image() -> io.BytesIO:
 
 
 @pytest.fixture
-def high_quality_image_path(  # pylint: disable=redefined-outer-name
-    high_quality_image: io.BytesIO,
-    tmp_path: Path,
-) -> Path:
+def high_quality_image_path(tmp_path: Path) -> Path:
     """Write ``high_quality_image`` to a temporary file and return its
     path.
 
     Useful for CLI and other APIs that require a filesystem path.
     """
     image_path = tmp_path / "high_quality_image.jpg"
-    _ = image_path.write_bytes(data=high_quality_image.getvalue())
+    _ = image_path.write_bytes(
+        data=_load_resource_bytes(name="high_quality_image.jpg"),
+    )
     return image_path
 
 
 @pytest.fixture
-def different_high_quality_image_path(  # pylint: disable=redefined-outer-name
-    different_high_quality_image: io.BytesIO,
-    tmp_path: Path,
-) -> Path:
+def different_high_quality_image_path(tmp_path: Path) -> Path:
     """Write ``different_high_quality_image`` bytes to a temporary path.
 
     Useful for CLI and other APIs that require a filesystem path.
     """
     image_path = tmp_path / "different_high_quality_image.jpg"
-    _ = image_path.write_bytes(data=different_high_quality_image.getvalue())
+    _ = image_path.write_bytes(
+        data=_load_resource_bytes(name="different_high_quality_image.jpg"),
+    )
     return image_path
 
 
