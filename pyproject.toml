@@ -94,6 +94,8 @@ packages.find.where = [
     "src",
 ]
 package-data.vws_test_fixtures = [
+    "different_high_quality_image.jpg",
+    "high_quality_image.jpg",
     "py.typed",
 ]
 zip-safe = false
@@ -266,11 +268,13 @@ ignore = [
     ".git_archival.txt",
     ".prettierrc",
     ".vale.ini",
+    ".vscode/*.json",
     ".yamlfmt",
     "CHANGELOG.rst",
     "ci",
     "ci/**",
     "CODE_OF_CONDUCT.rst",
+    "conftest.py",
     "CONTRIBUTING.rst",
     "doc8.ini",
     "docs",
@@ -282,6 +286,7 @@ ignore = [
     "newsfragments/**",
     "prek.toml",
     "spelling_private_dict.txt",
+    "styles/snapper/*.yml",
     "tests",
     "tests-pylintrc",
     "tests/**",
