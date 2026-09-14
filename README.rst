@@ -34,8 +34,7 @@ Example usage
 
 .. invisible-code-block: python
 
-   from sybil.testing import run_pytest
-   from vws_test_fixtures.images import high_quality_image
+   from sybil.testing import run_pytest from vws_test_fixtures.images import high_quality_image
 
    run_pytest(test_high_quality_image, fixtures=[high_quality_image])
 
