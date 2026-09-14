@@ -382,8 +382,6 @@ hooks = [
     id = "snapper",
     name = "snapper",
     entry = "uv run --group=dev snapper --native --max-width 0 --in-place",
-    # Snapper 0.11.2 joins statements in the README's invisible Python block.
-    exclude = "^README\\.rst$",
     language = "python",
     types_or = [
       "rst",

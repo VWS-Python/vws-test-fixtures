@@ -32,12 +32,17 @@ Example usage
 
 .. skip doccmd[all]: next
 
+.. Sybil's invisible code block uses a single-colon faux directive, which Snapper treats as prose.
+   Disable Snapper only for this executable block so that it does not join Python statements.
+
 .. invisible-code-block: python
 
+   # snapper:off
    from sybil.testing import run_pytest
    from vws_test_fixtures.images import high_quality_image
 
    run_pytest(test_high_quality_image, fixtures=[high_quality_image])
+   # snapper:on
 
 ``high_quality_image`` returns an image file which is expected to have a 'success' status when added to a target, and a high tracking rating.
 
