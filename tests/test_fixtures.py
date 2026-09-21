@@ -295,4 +295,13 @@ def test_image_file_success_state_low_rating_format(
 def test_package_reexports_image_fixtures() -> None:
     """Image fixtures are importable from the package root."""
     assert vws_test_fixtures.high_quality_image is not None
-    assert "high_quality_image" in vws_test_fixtures.__all__
+    assert vws_test_fixtures.__all__ == [
+        "bad_image_file",
+        "corrupted_image_file",
+        "different_high_quality_image",
+        "high_quality_image",
+        "image_file_failed_state",
+        "image_file_success_state_low_rating",
+        "image_files_failed_state",
+        "png_too_large",
+    ]
