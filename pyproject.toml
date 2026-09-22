@@ -41,7 +41,7 @@ entry-points.pytest11.vws_test_fixtures = "vws_test_fixtures.plugin"
 
 [dependency-groups]
 dev = [
-    "actionlint-py==1.7.12.24",
+    "actionlint-py==1.7.12.25",
     "beartype==0.22.9",
     "check-manifest==0.51",
     "coverage==7.16.1",
