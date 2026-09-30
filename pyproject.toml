@@ -42,7 +42,7 @@ entry-points.pytest11.vws_test_fixtures = "vws_test_fixtures.plugin"
 [dependency-groups]
 dev = [
     "actionlint-py==1.7.12.25",
-    "beartype==0.22.9",
+    "beartype==0.23.0rc2",
     "check-manifest==0.51",
     "coverage==7.16.1",
     "deptry==0.25.1",
@@ -60,7 +60,7 @@ dev = [
     "pyrefly==1.3.1",
     "pyright==1.1.414",
     "pyroma==5.0.1",
-    "pytest-beartype-tests==2026.8.16",
+    "pytest-beartype==0.3.0",
     "ruff==0.16.9",
     # We add shellcheck-py not only for shell scripts and shell code blocks,
     # but also because having it installed means that ``actionlint-py`` will
@@ -369,6 +369,9 @@ analysis.strict-equality-semantics = true
 analysis.strict-generic-narrowing = true
 
 [tool.pytest]
+beartype_packages = [ "vws_test_fixtures" ]
+beartype_test_fixtures = true
+beartype_tests = true
 log_cli = true
 xfail_strict = true
 
