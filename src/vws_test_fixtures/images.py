@@ -244,7 +244,7 @@ def corrupted_image_file() -> io.BytesIO:
 
 @pytest.fixture(
     params=_FAILED_STATE_IMAGE_PARAMS,
-    ids=["PNG-RGB", "JPEG-RGB", "PNG-L", "JPEG-L"],
+    ids="-".join,
 )
 def image_files_failed_state(request: pytest.FixtureRequest) -> io.BytesIO:
     """
@@ -265,7 +265,7 @@ def image_files_failed_state(request: pytest.FixtureRequest) -> io.BytesIO:
 
 @pytest.fixture(
     params=[("BMP", "RGB"), ("JPEG", "CMYK")],
-    ids=["Not accepted format", "Not accepted color space"],
+    ids="-".join,
 )
 def bad_image_file(request: pytest.FixtureRequest) -> io.BytesIO:
     """
