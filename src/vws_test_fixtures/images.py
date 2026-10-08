@@ -244,7 +244,7 @@ def corrupted_image_file() -> io.BytesIO:
 
 @pytest.fixture(
     params=_FAILED_STATE_IMAGE_PARAMS,
-    ids=["PNG-RGB", "JPEG-RGB", "PNG-L", "JPEG-L"],
+    ids="-".join,
 )
 def image_files_failed_state(request: pytest.FixtureRequest) -> io.BytesIO:
     """
