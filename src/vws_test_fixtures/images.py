@@ -265,7 +265,7 @@ def image_files_failed_state(request: pytest.FixtureRequest) -> io.BytesIO:
 
 @pytest.fixture(
     params=[("BMP", "RGB"), ("JPEG", "CMYK")],
-    ids="-".join,
+    ids=["Not accepted format", "Not accepted color space"],
 )
 def bad_image_file(request: pytest.FixtureRequest) -> io.BytesIO:
     """
