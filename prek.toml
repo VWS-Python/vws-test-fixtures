@@ -222,16 +222,6 @@ hooks = [
     additional_dependencies = ["uv==0.11.7"]
   },
   {
-    id = "pyright-verifytypes",
-    name = "pyright-verifytypes",
-    stages = ["pre-push"],
-    entry = "uv run --group=dev -m pyright --ignoreexternal --verifytypes vws_test_fixtures",
-    language = "python",
-    pass_filenames = false,
-    types_or = ["python"],
-    additional_dependencies = ["uv==0.11.7"]
-  },
-  {
     id = "ty",
     name = "ty",
     stages = ["pre-push"],

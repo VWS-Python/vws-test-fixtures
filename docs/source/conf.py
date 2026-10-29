@@ -23,7 +23,6 @@ extensions = [
     "sphinx_copybutton",
     "sphinx.ext.intersphinx",
     "sphinx.ext.napoleon",
-    "sphinx_autofixture",
     "sphinx_substitution_extensions",
     "sphinxcontrib.spelling",
     "sphinxcontrib.towncrier.ext",
