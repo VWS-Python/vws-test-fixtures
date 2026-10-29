@@ -1,23 +1,7 @@
-"""``pytest`` fixtures for testing Vuforia Web Services related tools."""
+"""Retired Cloud Image Recognition fixtures.
 
-from vws_test_fixtures.images import (
-    bad_image_file,
-    corrupted_image_file,
-    different_high_quality_image,
-    high_quality_image,
-    image_file_failed_state,
-    image_file_success_state_low_rating,
-    image_files_failed_state,
-    png_too_large,
-)
+This package no longer registers a pytest plugin or exports fixtures.
+Use an earlier release for legacy Cloud Image Recognition tests.
+"""
 
-__all__ = [
-    "bad_image_file",
-    "corrupted_image_file",
-    "different_high_quality_image",
-    "high_quality_image",
-    "image_file_failed_state",
-    "image_file_success_state_low_rating",
-    "image_files_failed_state",
-    "png_too_large",
-]
+__all__: list[str] = []
